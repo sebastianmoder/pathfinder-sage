@@ -1,74 +1,127 @@
-import Chat from '../../components/chat'
 import { Callout } from 'nextra/components'
 
-# Give the Model Time to Think
+# Plan, Verify, and Explain
 
-In chain-of-thought prompting, you <mark>encourage the AI to "show its work" as it arrives at a conclusion</mark>. Rather than jumping straight to an answer, the model follows a series of logical steps or considerations, as if it’s walking you through its thought process.
+*Last reviewed: 13 September 2026*
 
-Chain-of-thought prompting results in <mark>responses that are more thorough, logical, and coherent</mark>.[^Wei2022Chainofthought] This method is particularly useful for complex tasks, like solving multi-step problems or analyzing nuanced topics, where a structured approach is essential.
+For a complex task, improve the prompt by defining the outcome, evidence,
+constraints, and checks. Ask for a useful explanation of the answer—not a
+transcript of hidden reasoning.
 
-<Callout type="warning" emoji="️⏰">
-  The Chain-of-Thought approach gained widespread popularity in 2025, following the release of DeepSeek R1, a language model that emphasized extended, step-by-step reasoning. Soon after, other model families (including OpenAI’s reasoning models, Anthropic’s Claude models with extended thinking, and Google’s Gemini models with a 'thinking' mode) also emphasized similar approaches.[^DeepSeekR1] [^OpenAIModelReleaseNotes] [^AnthropicExtendedThinking] [^GoogleGeminiModelUpdates2025]
+<Callout type="warning">
+  A model's written step-by-step account is generated text. It may be convincing
+  without faithfully describing how the answer was produced, so it is not proof
+  that the answer is correct.[^Turpin2023Unfaithful]
 </Callout>
 
-## Benefits of Chain-of-Thought Prompting
+## Use an outcome-first prompt
 
-- **Enhanced Clarity**: Breaking down complex questions into smaller steps allows the model to consider each part carefully, reducing the chance of misunderstanding or glossing over details.
-- **Improved Accuracy**: With a step-by-step approach, the AI can "double-check" each stage, which often results in more reliable outcomes for calculations or logic-heavy tasks to reduce [hallucinations](/genai/limitations#hallucinations).[^Ji2023Mitigating]
-- **Transparency**: Following the model’s reasoning can be as valuable as the final answer. Chain-of-thought responses make the process visible and understandable.
+A strong prompt normally specifies:
 
-## How to Create a Chain-of-Thought Prompt?
+1. **Goal:** the task and the decision or learning outcome it should support.
+2. **Context:** only the information needed to do the work.
+3. **Evidence:** the sources or supplied material the answer may rely on.
+4. **Success criteria:** what a good result must contain.
+5. **Constraints:** audience, scope, tone, length, and prohibited actions.
+6. **Output:** the exact structure you need.
+7. **Uncertainty:** what to do when information is missing or ambiguous.
+8. **Checks:** how the model should test the result before returning it.
 
-1. **Ask for Step-by-Step Reasoning**: Start by explicitly requesting that the model explain its thinking, e.g., `Walk through each step` or `Explain your reasoning step-by-step.`[^Kojima2023Large]
-2. **Break Down Complex Tasks**: When dealing with multi-layered problems, specify individual components the model should address, like analyzing cause and effect, listing pros and cons, or calculating intermediate values.
-3. **Encourage Reflective Thinking**: If appropriate, ask the model to evaluate each stage before moving to the next, encouraging it to consider multiple perspectives or possibilities.
+Current model guidance likewise recommends stating the outcome and success
+criteria clearly, then asking the model to validate its work.[^OpenAIModelGuidance]
+Long instructions about every reasoning step can make a prompt more brittle when
+the exact path does not matter.
 
-{/* TODO: Examples for CoT-Prompts */}
-{/* TODO: tell it not to make assumptions and ask questions about anything it’s not sure about */}
+## Ask for checkable work
 
----
+The right kind of explanation depends on the task:
 
-**Example without Chain-of-Thought prompt**
+| Task | Ask for | Verify independently |
+| --- | --- | --- |
+| Calculation | formula, substituted values, units, and final result | recalculate the result |
+| Literature summary | claim-to-source mapping and page or section locations | open every cited source |
+| Assessment design | mapping between each item, learning outcome, and rubric criterion | compare with the approved course documents |
+| Recommendation | criteria, evidence for each option, assumptions, and trade-offs | check evidence and test alternative assumptions |
+| Lesson plan | sequence, timings, prerequisites, and observable learning evidence | confirm feasibility with the class context |
 
-<Chat 
-    userMessage="How many apples does Sarah have left if she starts with 12 apples and gives 7 to her friend?"
-    assistantMessage="If Sarah starts with 12 apples and gives 7 apples to her friend, she has 5 apples left. 🍎"
-/>
+Ask for a **concise rationale** when it helps a reader judge the answer. Do not
+treat verbosity as rigor.
 
----
+## A reusable prompt pattern
 
-**Example with Chain-of-Thought prompt**
+```text
+<goal>
+Create [deliverable] to support [learning or teaching outcome].
+</goal>
 
-<Chat 
-    userMessage="How many apples does Sarah have left if she starts with 12 apples and gives 7 to her friend? Explain your reasoning step-by-step."
-    assistantMessage={`To determine how many apples Sarah has left, we follow these steps:
+<context>
+Audience: [learners and level]
+Course context: [relevant context]
+Available time/resources: [constraints]
+</context>
 
-1. Start with the total number of apples Sarah has initially: Sarah starts with 12 apples.
+<evidence>
+Use only the material below for factual claims:
+[paste approved material or provide sources]
+</evidence>
 
-2. Subtract the number of apples Sarah gives away to her friend: Sarah gives 7 apples to her friend. To find out how many apples remain, subtract 7 from 12.
+<success_criteria>
+- [criterion 1]
+- [criterion 2]
+- [criterion 3]
+</success_criteria>
 
-3. State the result: After giving away 7 apples, Sarah has 5 apples left.
+<instructions>
+Produce [required format and length].
+Distinguish sourced facts from suggestions or inferences.
+If essential information is missing, ask up to three questions before drafting.
+Do not invent facts, quotations, references, or student information.
+</instructions>
 
-Final Answer: Sarah has 5 apples left.`}
-/>
+<verification>
+Before answering, check the draft against every success criterion.
+Return the deliverable, followed by a short verification table with one row per
+criterion and any uncertainty that remains.
+</verification>
+```
 
-## Further Reading
+Delimiters such as XML-style tags are optional; they mainly help separate
+instructions from source material in longer prompts. See [Use delimiters and
+special tokens](/prompting/use_delimiters).
 
-- [Chain-of-Thought Prompting at LearnPrompting.org](https://learnprompting.org/docs/intermediate/chain_of_thought)
-- [Chain-of-Thought Prompting at PromptingGuide.ai](https://www.promptingguide.ai/techniques/cot)
+## Decompose only where it helps
+
+Break a task into stages when later work depends on earlier results. For example:
+
+1. extract the relevant learning outcomes from an approved course document;
+2. propose assessment items mapped to those outcomes;
+3. review coverage and difficulty; and
+4. revise the set after the educator's feedback.
+
+This creates useful checkpoints. It does not make an unreliable source reliable,
+and asking the same model to "double-check" itself is not independent
+verification.
+
+## Make uncertainty actionable
+
+Replace "do not make assumptions" with instructions the model can follow:
+
+```text
+List assumptions that materially affect the result. If an essential input is
+missing, ask me before continuing. If a minor detail is missing, choose a
+reasonable default, label it, and explain how changing it would affect the
+answer.
+```
+
+## Test and iterate
+
+Evaluate prompts on several representative examples, including difficult and
+edge cases. Record the model and settings used, the failure patterns, and the
+human corrections. Re-test important workflows when the model, tool, source
+material, or task changes.
 
 ## References & Footnotes
 
-[^Ji2023Mitigating]: Ji, Z., Yu, T., Xu, Y., Lee, N., Ishii, E., & Fung, P. (2023). **Towards mitigating LLM hallucination via self reflection**. *Findings of the Association for Computational Linguistics: EMNLP 2023*, 1827–1843. https://doi.org/10.18653/v1/2023.findings-emnlp.123
+[^OpenAIModelGuidance]: OpenAI. **Prompting guidance for current models**. https://developers.openai.com/api/docs/guides/latest-model
 
-[^Kojima2023Large]: Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., & Iwasawa, Y. (2023). **Large language models are zero-shot reasoners**. *arXiv*. https://doi.org/10.48550/arXiv.2205.11916
-
-[^Wei2022Chainofthought]: Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q. V., & Zhou, D. (2022). **Chain-of-thought prompting elicits reasoning in large language models**. In S. Koyejo, S. Mohamed, A. Agarwal, D. Belgrave, K. Cho, & A. Oh (Eds.), *Advances in Neural Information Processing Systems* (Vol. 35, pp. 24824–24837). Curran Associates, Inc. https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf
-
-[^AnthropicExtendedThinking]: Anthropic. (2025, February 24). **Visible extended thinking**. *Anthropic*. https://www.anthropic.com/research/visible-extended-thinking
-
-[^DeepSeekR1]: DeepSeek-AI. (2025). **DeepSeek-R1** (GitHub repository). https://github.com/deepseek-ai/DeepSeek-R1
-
-[^GoogleGeminiModelUpdates2025]: Google. (2025, February 5). **Gemini model updates: 2.0 Flash, Flash-Lite and Pro Experimental**. *The Keyword (Google Blog)*. https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/
-
-[^OpenAIModelReleaseNotes]: OpenAI. (n.d.). **Model release notes**. *OpenAI Help Center*. https://help.openai.com/en/articles/9624314-model-release-notes/
+[^Turpin2023Unfaithful]: Turpin, M., Michael, J., Perez, E., & Bowman, S. R. (2023). **Language models don't always say what they think: Unfaithful explanations in chain-of-thought prompting**. *Advances in Neural Information Processing Systems, 36*. https://arxiv.org/abs/2305.04388

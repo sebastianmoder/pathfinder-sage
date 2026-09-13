@@ -1,38 +1,52 @@
-# Prompt Engineering
+# Basics of Prompting
 
-## What is prompting and why does it matter?
+Prompting is the practice of describing a task so that a generative AI system
+can produce a useful draft or analysis. Clear prompts improve the odds of a good
+result, but they do not guarantee accuracy. The most reliable workflow combines
+a well-specified task, appropriate source material, explicit success criteria,
+and human verification.[^Lin2024EffectivePrompts]
 
-<mark>The key to unlocking the power of generative AI lies in crafting effective prompts</mark>, a practice often referred to as *prompt engineering*.[^Liu2023PromptSurvey] This guide will introduce you to the principles and practices of prompt engineering, complete with tips and examples to help you optimize your interactions with advanced language models. Clear and well-structured prompts provide context and guide the AI effectively, leading to higher-quality responses.[^Lin2024EffectivePrompts]
+## Prompting guides
 
-Prompt engineering involves designing, testing, and refining prompts to achieve the desired output from a generative AI. It blends creativity and precision, making it both an art and a science. By following these practices, you can make the most of generative AI’s capabilities.[^Lin2024EffectivePrompts]
+- [Assign the model a job](/prompting/assign_job) explains when a role can provide useful perspective or domain context.
+- [Instruct the model throughout the prompt](/prompting/instruct) shows how to make instructions precise and consistent.
+- [Use delimiters and special tokens](/prompting/use_delimiters) separates instructions, examples, and source material.
+- [Plan, verify, and explain](/prompting/chain_of_thought_prompting) replaces generic "think step by step" advice with checkable criteria and validation.
+- [Provide examples to guide the output](/prompting/give_examples) uses examples to demonstrate the intended structure, tone, or classification.
+- [Further resources](/prompting/further_resources) collects additional prompting material.
 
-## Overview on Prompt Engineering
+## A practical default
 
-- [Assign the model a job](/prompting/assign_job.mdx) explains *role-prompting* to narrow down the desired solution early in the prompt by defining a specific role for the AI.
-- [Instruct the model throughout the prompt](/prompting/instruct.mdx) provides guidance on how to give clear and continuous instructions to the AI for better responses.
-- [Use delimiters and special tokens?](/prompting/use_delimiters.mdx) describes how to use symbols and tags to structure the prompt and reduce ambiguity in complex queries.
-- [Give the model time to think](/prompting/chain_of_thought_prompting.mdx) introduces *Chain-of-Thought* techniques for encouraging the AI to explain its reasoning step-by-step.
-- [Provide examples to guide the output](/prompting/give_examples.mdx) shows how to use few-shot prompting to illustrate the desired response style and format.
-- [Further Resources on Prompt Engineering](/prompting/further_resources.mdx) offers additional materials and references for deepening your understanding of prompt engineering.
+Start with a compact prompt containing:
 
-## In a nutshell
+1. **Goal:** what you need and why.
+2. **Context:** audience, level, and relevant circumstances.
+3. **Source material:** the information the response should use.
+4. **Success criteria:** what must be true of the result.
+5. **Constraints:** scope, tone, length, and boundaries.
+6. **Output format:** headings, table columns, or another useful structure.
+7. **Verification:** checks to perform and uncertainty to report.
 
-When interacting with generative AI, remember these key points:
+For example:
 
-**Garbage in, garbage out**: Unclear context or difficult to understand prompts reduce the quality of the answer.
+```text
+Draft three formative quiz questions for first-year economics students using
+only the supplied reading. Each question must test a different learning outcome.
+Return a table with the question, expected answer, learning outcome, difficulty,
+and the passage that supports the answer. Flag any learning outcome that the
+reading does not support; do not invent missing material.
+```
 
-**Keep prompts short**: Avoid superfluous information to focus on the essentials and relevant keywords. One topic per conversation: Frequent changes of topic lead more easily to incorrect or irrelevant answers.
+## Review is part of prompting
 
-**Provide Role and Context**: All necessary information and context for the desired answer should be included. Begin by telling the AI who it should “act” as and what you’re trying to do. For example, “`Act as an expert instructor in [your discipline]. I am creating a syllabus for [course name] …`” This primes the model to give academic-appropriate responses.
+Treat the first response as a draft. Check claims and citations, compare the
+result with your criteria, look for missing perspectives, and revise the prompt
+based on observed failures. For consequential or repeated workflows, test
+several representative inputs and record what the human reviewer changed.
 
-**Be Specific about the Output**: Clearly state what you want it to produce (a list of topics? a table? bullet points? a certain tone?). The more specific your instructions, the closer the first draft will match your needs. For instance, “`Present the rubric in a table with criteria as rows and performance levels as columns`” will yield a rubric formatted as a table.
-
-**Iterate and Refine**: Treat the AI’s response as a draft. You can ask follow-up questions or make requests to refine the material. For example, “`Now add more detail under week 2 and 3 of the outline`” or “`Can you rephrase that objective to be more measurable?`” Leveraging the chat interaction will improve the result in steps.
-
-**Review and Edit**: Always review the AI’s output yourself. Use your expertise to adjust any content that isn’t accurate or appropriate. Don’t just do exactly what it says – use your expert human judgment to modify or ignore its suggestions. Think of the AI as an assistant generating ideas and text, while you are the final editor ensuring quality and correctness.
+Never include personal or confidential information merely to improve a prompt.
+See [When to use generative AI](/genai/when_to_use) and [Responsible AI use](/genai/responsible_use) before using real student material.
 
 ## References & Footnotes
 
-[^Lin2024EffectivePrompts]: Lin, Z. (2024). **How to write effective prompts for large language models**. *Nature Human Behaviour*, *8*, 611–615. https://doi.org/10.1038/s41562-024-01847-2
-
-[^Liu2023PromptSurvey]: Liu, P., Yuan, W., Fu, J., Jiang, Z., Hayashi, H., & Neubig, G. (2023). **Pre-train, prompt, and predict: A systematic survey of prompting methods in natural language processing**. *ACM Computing Surveys*, *55*(9), 1–35. https://doi.org/10.1145/3560815
+[^Lin2024EffectivePrompts]: Lin, Z. (2024). **How to write effective prompts for large language models**. *Nature Human Behaviour, 8*, 611–615. https://doi.org/10.1038/s41562-024-01847-2

@@ -4,8 +4,4 @@ export default {
     tutoring: 'AI as a tutor',
     ai_literacy: 'Evaluating AI outputs',
     writing_instruction: 'AI-assisted writing',
-    promptathon: {
-        title: 'Conduct a promptathon',
-        display: 'hidden',
-    },
 }

@@ -4,5 +4,14 @@ module.exports = {
     generateRobotsTxt: true, // (optional)
     generateIndexSitemap: false, // (optional)
     outputDir: 'public', // (optional)
+    // Drafts live outside content/. Keep former draft routes out if stale build
+    // output survives in an incremental deployment.
+    exclude: [
+        '/aitools',
+        '/casereports',
+        '/teachertraining',
+        '/students/promptathon',
+        '/teaching/admin_work',
+    ],
     // ...other options
 }

@@ -1,69 +1,81 @@
-import { Steps } from 'nextra/components'
-import Link from 'next/link'
+import { Callout, Steps } from 'nextra/components'
 
-# When can language models be used?
+# When to Use Generative AI
 
-Generative AI, such as language models, can be powerful tools in education, but their use requires thoughtful consideration. Before delegating a task to an AI, ask yourself these four critical questions.
+Generative AI is most useful when it expands options or saves drafting time
+without removing human responsibility. Use the following questions before each
+task—not just when selecting a tool.
+
+<Callout type="warning">
+  If the task affects admission, grades, progression, misconduct, discipline,
+  student support, or other important rights, stop and follow institutional
+  review procedures. See [Responsible AI Use in Higher Education](/genai/responsible_use).
+</Callout>
 
 <Steps>
 
-## What happens if the output is incorrect?
+## What is the purpose?
 
-Before using AI, consider the potential consequences of an incorrect output. If you are using AI to generate an Email to your colleague to request a meeting and the AI sounds too formal or informal given your relationship, that is a minor inconvenience but unlikely to have any meaningful consequences. However, <mark>AI is not a safe choice for high-stakes decision-making</mark> such as evaluating (and possibly failing) students. Language models can produce plausible-sounding but incorrect or misleading outputs, often referred to as *hallucinations* (see [Limitations](/genai/limitations)).
+State the learning or operational outcome first. AI is a reasonable candidate
+when it helps generate alternatives, transform material you understand, or
+produce a draft for expert review. It adds little when the activity itself is
+the learning outcome—for example, when students must demonstrate unaided
+writing, calculation, or clinical reasoning.
 
-Use AI as part of an *augmented decision-making process* to amplify your creativity and productivity, but not as the sole source of information. 
+## What happens if the output is wrong?
 
-In practice, *augmented decision-making* means the model can help you generate options, structure your thinking, or summarize information—but a human remains responsible for the final decision and can justify it without “because the AI said so”.
+Match the review effort to the consequence. An awkward meeting-email draft is
+easy to correct. Incorrect feedback, a fabricated citation, or an unfair grade
+can materially affect a student.
 
-Examples of safer augmentation in education:
+Never treat model output as evidence by itself. For consequential tasks, the
+decision-maker must inspect the original work and relevant criteria and be able
+to justify the decision without referring to the model as the authority.
 
-- Brainstorming alternative lesson ideas or explanations
-- Drafting rubrics, then revising them to match your learning goals
-- Suggesting feedback phrasing, while you verify it against the student’s work
+## Can you verify it?
 
-Examples that are typically **not** appropriate (or require very strict safeguards and institutional guidance):
+Use AI where you or another reviewer can recognise errors. Check factual claims
+against authoritative sources, recalculate numbers, open cited publications,
+and compare assessment-related suggestions with the approved learning outcomes
+and rubric. If reliable verification is impractical, change the workflow or do
+not use AI.
 
-- Automatically grading, ranking, or passing/failing students
-- Using a model’s output as evidence of misconduct or plagiarism
-- Making disciplinary, admission, or support decisions based on AI-generated “risk” predictions
+## Are the tool and data appropriate?
 
-If a tool is used anywhere in a decision pipeline, ensure there is clear accountability (who decides), transparency (what was used and how), and a way to contest the outcome.
+Use institutionally approved tools and share only the minimum data needed.
+Remove direct and indirect identifiers and prefer synthetic examples. Do not
+enter student records, identifiable work, grades, health or support information,
+private messages, or confidential research into an unapproved service.
 
-## How will you check the accuracy of the output?
+Consent is not a substitute for institutional approval or a complete data
+protection assessment. Local models may reduce third-party disclosure, but they
+still require secure operation and an appropriate legal and pedagogical basis.
 
-AI is your assistant, not a replacement. <mark>Only use AI for tasks you could confidently solve independently, given enough time</mark>. For example, AI can quickly generate complex legal documents that seem polished and thorough. But unless you’re trained in law, you might not be able to spot errors or gaps in those documents. Thus, if you're unfamiliar with a topic, the AI's errors may go unnoticed, potentially misleading your students. That’s why it’s important to use AI within the limits of your own knowledge. 
+## Is the activity fair and accessible?
 
-We have written more extensively about how to fact-check AI-generated outputs in the article on [Limitations](/genai/limitations).
+Check cost, account requirements, accessibility, language performance, and
+availability in students' locations. If AI use is required, provide access and
+an equivalent alternative for anyone who cannot use the tool. Do not infer a
+student's capability or intent from writing style, language variety, or an AI
+detector score.
 
-## What data are you sharing with the AI?
+## How will you communicate the use?
 
-Generative AI models are hosted by operators, meaning any data you provide is sent to their servers and may be processed outside your control. Avoid inputting sensitive data such as personal information, student grades, or proprietary materials (unless you have obtained informed consent). 
-
-Treat prompts as semi-public. As a rule of thumb, we recommend that you <mark>put nothing into a prompt that you would not post on your personal social media</mark>. While some platforms offer "incognito" modes or data privacy settings, you are still potentially sending confidential information to be processed by a third party. 
-
-If privacy is critical, explore running AI models locally on your computer. Open-source models such as [LLaMA <i className="fa-solid fa-arrow-up-right-from-square"></i>](https://www.llama.com/) can offer privacy, but they require basic programming knowledge and adequate hardware.
-
-## Do you require ownership of the output?
-
-Generative <span mark-color="yellow">AI outputs can usually be claimed as your own</span>,[^Eshraghian2020Human] provided you comply with the model's terms of use and applicable laws. However, there are nuances to consider, particularly if the output is for commercial purposes or resembles existing copyrighted material. 
-
-- <span mark-color="green">When the creative outcome is driven by predominant human intellectual activity</span>—where a person makes free and creative choices during conception, execution, or revision—the work is generally eligible for copyright protection.[^Hugenholtz2021Copyright] The Court of Justice of the European Union supports this position, emphasizing that existing IP laws apply when AI is used as an assistive tool.[^CJEU2011Panier]
-- On the other hand, <span mark-color="red">if the AI operates autonomously with little to no human contribution</span> to the creative output, IP protection may not apply. Minor modifications to AI-generated outputs, such as light editing, are usually insufficient to establish legal ownership.[^Novelli2024Generative]
-- Language models must not be used for legal infringements (e.g., copyright infringements). Asking AI to create something "in the style of [Author/Artist X]" could lead to outputs that resemble copyrighted work. In this case, it could be legally unclear who owns the result - the user, the artist or the model developer.[^Guadamuz2021Androids] [^Hilty2021Intellectual]
-- Importantly, when an output is provided directly to users (i.e., without a human in the loop), it must be clear to users that the answers do not originate from a human being. 
+Tell students what is permitted, why the tool is being used, what they should
+disclose, and who remains responsible. For student-facing or consequential
+outputs, explain the role AI played and provide a way to correct or challenge
+the result.
 
 </Steps>
 
-## References & Footnotes
+## Quick examples
 
-[^CJEU2011Panier]: Court of Justice of the European Union (CJEU), 1 December 2011, case C‐145/10, *Painer*, [ECLI:EU:C:2011:798](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A62010CJ0145)
+| Use | Examples | Minimum safeguard |
+| --- | --- | --- |
+| Good starting point | Brainstorm lesson examples; reformat educator-authored material; draft low-stakes communications | Educator reviews before use |
+| Context-dependent | Draft feedback; create practice questions; adapt reading level; summarise approved source material | Verify against originals, test accessibility and bias, disclose where relevant |
+| Escalate or avoid | Admission, grading, misconduct detection, discipline, student-risk prediction, automated support allocation | Institutional assessment; never use model output as the sole basis |
 
-[^Eshraghian2020Human]: Eshraghian, J. K. (2020). **Human ownership of artificial creativity**. *Nature Machine Intelligence*, *2*(3), 157–160. https://doi.org/10.1038/s42256-020-0161-x
-
-[^Guadamuz2021Androids]: Guadamuz, A. (2021). **Do androids dream of electric copyright?: Comparative analysis of originality in artificial intelligence generated works**. In J.-A. Lee, R. Hilty, & K.-C. Liu (Eds.), *Artificial Intelligence and Intellectual Property* (1st ed., pp. 147–176). Oxford University Press. https://doi.org/10.1093/oso/9780198870944.003.0008
-
-[^Hilty2021Intellectual]: Hilty, R. M., Hoffmann, J., & Scheuerer, S. (2021). **Intellectual property justification for artificial intelligence**. In J.-A. Lee, R. Hilty, & K.-C. Liu (Eds.), *Artificial Intelligence and Intellectual Property* (1st ed., pp. 50–72). Oxford University Press. https://doi.org/10.1093/oso/9780198870944.003.0004
-
-[^Hugenholtz2021Copyright]: Hugenholtz, P. B., & Quintais, J. P. (2021). **Copyright and artificial creation: Does EU copyright law protect AI-assisted output?** *International Review of Intellectual Property and Competition Law*, *52*(9), 1190–1216. https://doi.org/10.1007/s40319-021-01115-0
-
-[^Novelli2024Generative]: Novelli, C., Casolari, F., Hacker, P., Spedicato, G., & Floridi, L. (2024). **Generative AI in EU law: Liability, privacy, intellectual property, and cybersecurity** (Version 4). *arXiv*. https://doi.org/10.48550/ARXIV.2401.07348
+If the task passes this checklist, start small, test it with representative
+examples, record failures, and define a condition that would make you stop using
+the workflow.

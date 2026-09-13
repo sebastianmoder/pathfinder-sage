@@ -4,14 +4,14 @@ import { Callout } from 'nextra/components'
 
 While generative AI tools like language models can be powerful and versatile, they have significant limitations that users must understand to use them effectively. Below are key constraints, with detailed explanations and examples.
 
-<Callout type="warning">This article focuses on hallucinations and biases. If you are interested in the possible pitfalls related to **sharing sensible data in your prompts** and **potential copyright infringement**, check out the section on [when to use generative AI](/genai/when_to_use).</Callout>
+<Callout type="warning">This article focuses on hallucinations and biases. For guidance on **sharing sensitive data**, high-impact decisions, and copyright, see [Responsible AI use](/genai/responsible_use).</Callout>
 
 ## Hallucinations
 
-Language models are trained on datasets containing information up to a specific cut-off date. This means they lack awareness of events, discoveries, or developments that occurred after that date.[^Martino2023Knowledge]
+Language models can have gaps in their training data and may not reliably know when information changed. Some products can retrieve current information or use supplied documents, but access to a source does not guarantee that the model found, interpreted, or cited it correctly.[^Martino2023Knowledge]
 
 - **Good Use Case**: Asking about the historical significance of the Renaissance or the basics of quantum mechanics. These topics are well within the training data.
-- **Inappropriate Use Case**: Asking for insights on the latest research paper published this month or for predictions about ongoing political events. The model won’t have this information unless you include it in the prompt.
+- **Inappropriate Use Case**: Asking for insights on the latest research paper published this month without providing or verifying the paper and expecting a dependable answer from the model's general knowledge.
 
 <mark>For tasks requiring up-to-date information, it is essential to provide the latest context within your query</mark> (e.g., current events, recent technology updates, or new legal policies). While some AI models can access the internet to retrieve real-time updates, this capability varies across platforms and may not always be reliable. Importantly, a language model’s underlying knowledge base does not update automatically. Without additional context, the model may generate outdated or inaccurate information, a phenomenon often referred to as *hallucination*. In such cases, the model produces answers that sound confident and plausible but are factually incorrect or misleading.[^Huang2024Survey] [^Raunak2021Curious]
 
@@ -22,7 +22,7 @@ You should always <mark>critically evaluate the outputs</mark>, especially when 
 
 ### Reducing the likelihood of hallucinations
 
-To mitigate hallucinations, you can provide additional context or constraints in your prompt to guide the model towards more accurate responses. Furthermore, you can use techniques like [chain-of-thought prompting](/prompting/chain_of_thought_prompting) to encourage the AI to explain its reasoning step-by-step.[^Ji2023Towards] 
+To reduce hallucinations, provide authoritative source material, define what the response may rely on, and request checkable claim-to-source links. For complex work, use [Plan, verify, and explain](/prompting/chain_of_thought_prompting) to define success criteria and validation steps.
 
 However, no technique can guarantee that the model will always produce accurate information. Therefore, it’s crucial to verify the AI's output against reliable sources, especially when dealing with factual claims or sensitive topics.
 
@@ -61,7 +61,5 @@ Read the output with an eye for any unintended bias or stereotype. Ensure that t
 [^Huang2024Survey]: Huang, L., Yu, W., Ma, W., Zhong, W., Feng, Z., Wang, H., Chen, Q., Peng, W., Feng, X., Qin, B., & Liu, T. (2024). **A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions**. *ACM Transactions on Information Systems*, 3703155. https://doi.org/10.1145/3703155
 
 [^Raunak2021Curious]: Raunak, V., Menezes, A., & Junczys-Dowmunt, M. (2021). **The curious case of hallucinations in neural machine translation**. *Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies*, 1172–1183. https://doi.org/10.18653/v1/2021.naacl-main.92
-
-[^Ji2023Towards]: Ji, Z., Yu, T., Xu, Y., Lee, N., Ishii, E., & Fung, P. (2023). **Towards mitigating LLM hallucination via self reflection**. *Findings of the Association for Computational Linguistics: EMNLP 2023*, 1827–1843. https://doi.org/10.18653/v1/2023.findings-emnlp.123
 
 [^Welborn2023ChatGPT]: Welborn, A. (2023, March 9). **ChatGPT and Fake Citations**. *Duke University Libraries Blogs*. https://blogs.library.duke.edu/blog/2023/03/09/chatgpt-and-fake-citations

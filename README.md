@@ -35,9 +35,8 @@ sections are:
   materials, exam questions, rubrics, and related teaching workflows.
 - **Students' Experiences**: guidance for assessment, tutoring, simulations, AI
   literacy, and writing instruction.
-- **Hidden or draft sections**: additional pages such as case reports, teacher
-  training, and AI tools can be built but hidden from the sidebar through
-  `_meta.js`.
+- **Draft sections**: incomplete pages live in `drafts/`, outside Nextra's
+  routable content tree, until they meet the publication checklist.
 
 The intention is not to promote AI use for its own sake. The site should help
 educators make informed decisions, keep human expertise central, and treat AI
@@ -60,7 +59,8 @@ This project uses:
 ```text
 app/                       Next.js App Router layout and Nextra catch-all route
 components/                Shared React components
-content/                   MDX documentation pages and navigation metadata
+content/                   Published MDX pages and navigation metadata
+drafts/                    Unpublished working content
 public/                    Static assets, generated sitemap, and Pagefind index
 styles/                    Global CSS and chat component styles
 mdx-components.js          Nextra MDX component wiring
@@ -131,8 +131,8 @@ To add or change a page:
 
 1. Edit or create an `.mdx` file in the relevant `content/` section.
 2. Update that section's `_meta.js` file to control sidebar order and labels.
-3. Use `display: 'hidden'` in `_meta.js` when a page should build but not appear
-   in navigation.
+3. Keep incomplete pages in `drafts/`; a sidebar-hidden page inside `content/`
+   may still be routed, indexed by search, and included in the sitemap.
 4. Run `pnpm build` to catch MDX, routing, and sitemap/search-index issues.
 5. Manually check the affected route in `pnpm dev`.
 

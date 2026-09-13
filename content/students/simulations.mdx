@@ -47,19 +47,27 @@ The key to a successful AI-facilitated simulation is how you prompt the chatbot.
 
 ## Running the Simulation
 
-### Setting up a Custom GPT
+### Setting up a course-grounded assistant
 
 Once the scenario, roles, and prompt are prepared, AI can move from being a design tool to becoming an active participant in the simulation itself. The value of AI in this stage lies in its adaptability: it can improvise responses, react to student decisions, and keep the role-play dynamic. This reduces the burden on lecturers to play multiple roles or continually invent new challenges, allowing them to focus instead on observing and guiding student learning.
 
-A good approach is to <mark>set up a custom GPT designed specifically for the simulation</mark>. Many AI platforms now allow educators to create specialized agents that carry a defined role or knowledge base. The model can then respond only from within this material, ensuring accuracy and consistency. 
+A useful option is to configure an assistant specifically for the simulation.
+Some platforms let educators provide instructions and reference files for a
+defined role or scenario. This grounding can make responses more relevant, but
+it does **not** ensure that the model will use only those materials or that its
+answers will be accurate and consistent. Require the assistant to distinguish
+provided evidence from improvisation, and test whether it invents facts,
+misreads sources, or reveals hidden scenario information.
 
-Setting up a custom GPT usually involves the following steps that you can try out with our [example prompt below](#example-prompt-government-minister-negotiating-a-climate-agreement): 
+Setting up a course-grounded assistant usually involves the following steps that you can try out with our [example prompt below](#example-prompt-government-minister-negotiating-a-climate-agreement):
 
 1. defining the role and purpose, 
 2. uploading or linking supporting material, 
 3. and testing with trial prompts to make sure the responses behave as expected. 
 
-Once created, this custom GPT can be reused, with the lecturer simply adjusting prompts or inputs to fit new learning contexts.
+Before reuse, check whether the source material, model, sharing settings, and
+learning context have changed. Use only institutionally approved tools and
+materials; see [Responsible AI use](/genai/responsible_use).
 
 ### Debriefing and Reflection
 
@@ -109,7 +117,7 @@ The student then asks Jefferson (the AI) questions or answers questions posed by
     
 > Act as Elizabeth Bennet from Pride and Prejudice. I will be another character or a modern interviewer asking you about your views on love and marriage. 
 
-This allows students to explore character motivations and themes in a novel by "talking" to the character. Similarly, one could chat with Shakespeare about his plays, or have two characters from different books meet (with the student playing one and th AI impersonating the other). 
+This allows students to explore character motivations and themes in a novel by "talking" to the character. Similarly, one could chat with Shakespeare about his plays, or have two characters from different books meet (with the student playing one and the AI impersonating the other).
 
 ---
 
