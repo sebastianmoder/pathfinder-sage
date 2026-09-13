@@ -3,6 +3,8 @@ import { Steps } from 'nextra/components'
 
 # Creating Quizzes and Exam Questions with AI
 
+*Last reviewed: 13 September 2026*
+
 AI can speed up assessment design: generating question pools, producing variants, drafting rubrics, and helping you review items for clarity. But it only becomes *good pedagogy* when you use it to support a deliberate assessment workflow: clear learning outcomes, appropriate cognitive level, and careful review for accuracy and fairness.[^TestingStandards2014]
 
 Well-designed quizzes also serve learning (not just grading). Frequent retrieval practice (“practice tests”) reliably improves long-term retention, especially when paired with feedback.[^RoedigerKarpicke2006] [^Dunlosky2013] [^KarpickeBlunt2011]
@@ -41,7 +43,7 @@ Generate *more* questions than you need, then curate. Your goal is not “one pe
 
 ### 4. Use AI as a reviewer (clarity, bias, construct-irrelevant difficulty)
 
-LLMs are often better at *editing* than *inventing* assessment items. Have the model critique your drafted questions against item-writing rules and flag problems like ambiguous wording, hidden assumptions, and irrelevant complexity.[^UWMCQ] [^CarletonMCQ]
+LLMs are often better at *editing* than *inventing* assessment items. Have the model critique your drafted questions against item-writing rules and flag problems like ambiguous wording, hidden assumptions, and irrelevant complexity.[^UWExamQuestionTypes]
 
 **What to ask AI for**
 
@@ -97,7 +99,7 @@ Task:
 
 ### 2) Generate MCQs with rationales and misconception-based distractors
 
-Research-based tip: three-option MCQs are often sufficient and can reduce time spent inventing weak distractors.[^UWMCQ]
+Start with three plausible options. Add another only when it represents a meaningful misconception; weak distractors add noise without improving the question.[^UWExamQuestionTypes]
 
 ```md copy
 Generate 12 multiple-choice questions aligned to this blueprint:
@@ -138,7 +140,7 @@ Questions:
 
 ### Multiple-choice questions (MCQ)
 
-Use MCQs when you want breadth of coverage and efficient grading. Strong MCQs can also assess application and analysis, not only recall.[^UWMCQ] [^CarletonMCQ]
+Use MCQs when you want breadth of coverage and efficient grading. Strong MCQs can also assess application and analysis, not only recall.[^UWExamQuestionTypes]
 
 Ask AI to draft stems from scenarios or cases (application), generate distractors based on known misconceptions, write brief rationales for correct and incorrect options (useful for feedback and review), and spot unintended cues (grammatical agreement, option length patterns, absolute words).
 
@@ -180,17 +182,16 @@ For inclusive practice, prioritize proactive design (clear expectations, accessi
 
 For broader guidance on responsible use of generative AI in education (including privacy and governance considerations), see UNESCO’s guidance.[^UNESCOGenAI]
 
+State the permitted AI level and disclosure requirements in each assessment
+brief. See [Setting course and assignment AI rules](/teaching/course_ai_policy).
+
 ## References & Footnotes
 
 [^TestingStandards2014]: American Educational Research Association, American Psychological Association, & National Council on Measurement in Education. (2014). **Standards for Educational and Psychological Testing**. https://www.testingstandards.net/open-access-files.html
 
 [^CornellBloom]: Cornell University, Center for Teaching Innovation. **Bloom’s taxonomy**. https://teaching.cornell.edu/resource/blooms-taxonomy
 
-[^UWExamQuestionTypes]: University of Waterloo, Centre for Teaching Excellence. **Exam Question Types**. https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/exam-question-types
-
-[^UWMCQ]: University of Waterloo, Centre for Teaching Excellence. **Multiple Choice Questions**. https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/multiple-choice-questions
-
-[^CarletonMCQ]: Carleton University, Teaching and Learning Services. **Multiple-Choice Questions**. https://carleton.ca/tls/teachingresources/tests-quizzes/multiple-choice-questions/
+[^UWExamQuestionTypes]: University of Waterloo, Centre for Teaching Excellence. **Exam Questions: Types, Characteristics, and Suggestions**. https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/exam-questions-types-characteristics-and-suggestions
 
 [^RoedigerKarpicke2006]: Roediger, H. L., III, & Karpicke, J. D. (2006). **Test-enhanced learning: Taking memory tests improves long-term retention**. *Psychological Science*, *17*(3), 249–255. https://doi.org/10.1111/j.1467-9280.2006.01693.x
 

@@ -3,20 +3,37 @@ import { Steps } from 'nextra/components'
 
 # Using AI Chatbots as Personalized Tutors
 
+*Last reviewed: 13 September 2026*
+
 Students already turn to AI chatbots when they get stuck. The question for educators is not whether this will happen, but whether students will use these tools as coaches for learning or as answer machines.
 
 <mark>The goal is to turn the chatbot into a tutor that supports thinking, practice, and feedback — without replacing the student’s work.</mark>
 
-## Why students use AI tutors
+## What the evidence does—and does not—show
 
-AI tutoring works best for low-stakes, high-frequency learning tasks: explaining concepts, generating practice, and helping students diagnose gaps.[^VanLehn2011Tutoring] [^KulikFletcher2016ITS] [^Ma2014ITS]
+Decades of research on purpose-built intelligent tutoring systems show that
+structured tutoring software can improve learning in some settings.[^VanLehn2011Tutoring]
+That evidence does not automatically transfer to a general-purpose chatbot.
+
+Newer GenAI research is promising but context-dependent. A 2025 university
+physics trial found stronger immediate learning with a carefully engineered,
+course-specific AI tutor than with an active-learning lesson; the tutor combined
+a model with structured materials, sequencing, and tested pedagogical rules—it
+was not an unrestricted chat session.[^Kestin2025Tutoring] A 2025 meta-analysis
+likewise found positive average outcomes with substantial variation by learner,
+tool, role, rules, context, and outcome measure.[^ChenCheung2025Meta]
+
+Use AI tutoring first for low-stakes, high-frequency tasks such as explanation,
+practice, and diagnosing gaps. Evaluate the actual implementation rather than
+assuming that the label “AI tutor” establishes quality.
 
 Key benefits:
 
 - **Availability**: help outside office hours and between classes.
 - **Adaptation**: multiple explanations, examples, and levels of detail on demand.
 - **Practice**: quizzes, worked examples, and targeted drills.
-- **Accessibility**: multilingual support and the ability to rephrase or simplify text.
+- **Possible accessibility support**: alternative explanations, formats, or
+  languages, subject to testing with the learners who need them.
 
 ## What an AI tutor should (and should not) do
 
@@ -35,6 +52,12 @@ Be explicit that they should not use it for:
 - Generating submissions to hand in as their own work.
 - Fabricating sources or citations (which students must verify themselves).
 
+<Callout type="warning">
+  Required AI tutoring needs an institutionally approved tool, accessible
+  participation, and an equivalent alternative. Do not require students to
+  disclose personal circumstances or upload protected course material.
+</Callout>
+
 <mark>Students should treat AI outputs as drafts to evaluate, not facts to trust.</mark> If you want a dedicated activity for this, see [Teaching Students to Critically Evaluate AI Outputs](/students/ai_literacy/).
 
 ## Getting Started: Setting Up Your AI Tutor
@@ -43,7 +66,11 @@ Be explicit that they should not use it for:
 
 ### Choose a platform
 
-Pick a tool that is easy for students to access and that supports the languages you need. Also consider [privacy and compliance](/genai/when_to_use/); if required, confirm whether the platform is approved for educational use by your institution.
+Pick an institutionally approved tool that students can access and that supports
+the required languages and assistive technology. Check cost, account and age
+requirements, retention and training settings, export and deletion, and
+availability in students' locations. See [When to use AI](/genai/when_to_use/)
+and publish an equivalent alternative before making the activity required.
 
 ### Define the tutor’s role and boundaries
 
@@ -51,7 +78,12 @@ To create a good AI tutor requires [good prompting skills](/prompting/). Give th
 
 For instance, students can start with:
 
-> You are a friendly and knowledgeable tutor for my Introduction to Biology course. You will explain concepts in simple terms, give examples, and ask me questions to check my understanding. If I get something wrong, guide me to the right answer step-by-step.
+> You are a supportive tutor for my Introduction to Biology course. Use the
+> supplied course material as the source for factual explanations. Begin by
+> asking what I am trying to understand and what I have attempted. Give one hint
+> or question at a time before showing a worked example. Ask me to explain the
+> idea back in my own words. If the course material does not support an answer,
+> say so rather than inventing one.
 
 Adjust the prompt to fit your discipline and the level of your students. The goal is to have the AI adopt a pedagogical style: it should not just give answers away, but engage the student in learning (for example, through hints, dialogue, or worked examples they can replicate).
 
@@ -61,13 +93,21 @@ To get you started, a [sample prompt](#example-prompt-general-tutor) is included
 
 ### Ground it in course material (when appropriate)
 
-If the platform allows it, have students paste excerpts or work with course-provided materials (definitions, problem statements, worked examples, rubrics). While LLMs have broad knowledge, they may not match your syllabus, notation, or conventions.
+If the platform and licences allow it, provide approved course excerpts,
+definitions, problem statements, or worked examples. Do not tell students to
+upload an entire textbook, assessment bank, peer's work, or other protected
+material. Broad model knowledge may not match your syllabus, notation, or
+conventions.
 
 <mark>When students supply course context, the tutor becomes more aligned — and you get fewer confident-but-off-target explanations.</mark>
 
 ### Pilot it yourself
 
-Test a few realistic student questions and check the outputs. If responses are too advanced, too shallow, or too “answer-first,” refine the initial prompt you plan to share with students.
+Test representative questions, misconceptions, ambiguous requests, attempts to
+obtain assessed answers, and cases beyond the supplied material. Check accuracy,
+sequencing, cognitive load, tone, accessibility, and whether the tutor gives away
+the target work. A prompt alone may not reliably scaffold a complex multi-part
+lesson; add educator-controlled sequencing or do not use the workflow.
 
 ### Introduce it to students with norms
 
@@ -111,7 +151,7 @@ Examples:
 
 Examples:
 
-- `Show a step-by-step solution, then give me a similar problem to try.`
+- `Ask me for my first step, then give one hint at a time. Show a worked example only after I have attempted the problem.`
 - `Here is my solution: [paste]. Check it and tell me the first step that is wrong (if any).`
 - `Explain why this substitution/assumption is valid in this step.`
 
@@ -123,7 +163,8 @@ Examples:
 - `Give me 10 sentences to translate that use the past tense and common idioms.`
 - `Role-play a [scenario]. Keep it at CEFR level [A2/B1/B2].`
 
-<mark>Frequent, low-pressure practice is where AI tutors shine.</mark>
+Frequent, low-pressure practice is a reasonable place to pilot an AI tutor,
+provided learners can verify corrections and are not penalised for tool errors.
 
 ## Example Prompt: General Tutor
 
@@ -141,8 +182,8 @@ Rules:
 
 ## References & Footnotes
 
-[^KulikFletcher2016ITS]: Kulik, J. A., & Fletcher, J. D. (2016). **Effectiveness of intelligent tutoring systems: a meta-analytic review**. *Review of Educational Research*, *86*(1), 42–78. https://doi.org/10.3102/0034654315581420
-
-[^Ma2014ITS]: Ma, W., Adesope, O. O., Nesbit, J. C., & Liu, Q. (2014). **Intelligent tutoring systems and learning outcomes: A meta-analysis**. *Journal of Educational Psychology*, *106*(4), 901–918. https://doi.org/10.1037/a0037123
-
 [^VanLehn2011Tutoring]: VanLehn, K. (2011). **The relative effectiveness of human tutoring, intelligent tutoring systems, and other tutoring systems**. *Educational Psychologist*, *46*(4), 197–221. https://doi.org/10.1080/00461520.2011.611369
+
+[^ChenCheung2025Meta]: Chen, S., & Cheung, A. C. K. (2025). **Effect of generative artificial intelligence on university students learning outcomes: A systematic review and meta-analysis**. *Educational Research Review, 49*, 100737. https://doi.org/10.1016/j.edurev.2025.100737
+
+[^Kestin2025Tutoring]: Kestin, G., Miller, K., Klales, A., Milbourne, T., & Ponti, G. (2025). **AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting**. *Scientific Reports, 15*, 17458. https://doi.org/10.1038/s41598-025-97652-6

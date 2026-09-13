@@ -1,65 +1,111 @@
 import { Callout } from 'nextra/components'
 
-# Limitations of language models
+# Limitations and Risks of Generative AI
 
-While generative AI tools like language models can be powerful and versatile, they have significant limitations that users must understand to use them effectively. Below are key constraints, with detailed explanations and examples.
+*Last reviewed: 13 September 2026*
 
-<Callout type="warning">This article focuses on hallucinations and biases. For guidance on **sharing sensitive data**, high-impact decisions, and copyright, see [Responsible AI use](/genai/responsible_use).</Callout>
+Generative AI can produce useful drafts, but polished output can conceal weak
+evidence, missing context, or inappropriate assumptions. The relevant question
+is not whether a model is “good” in general, but whether a particular workflow
+is reliable and fair enough for its educational purpose.
 
-## Hallucinations
+<Callout type="warning">
+  For sensitive data, high-impact educational decisions, transparency,
+  copyright, and institutional approval, see [Responsible AI
+  use](/genai/responsible_use).
+</Callout>
 
-Language models can have gaps in their training data and may not reliably know when information changed. Some products can retrieve current information or use supplied documents, but access to a source does not guarantee that the model found, interpreted, or cited it correctly.[^Martino2023Knowledge]
+## Unsupported or fabricated content
 
-- **Good Use Case**: Asking about the historical significance of the Renaissance or the basics of quantum mechanics. These topics are well within the training data.
-- **Inappropriate Use Case**: Asking for insights on the latest research paper published this month without providing or verifying the paper and expecting a dependable answer from the model's general knowledge.
+Models can produce false claims, quotations, calculations, code, and references
+that look credible. Retrieval or file upload can reduce some errors, but access
+to a source does not guarantee that the model found, interpreted, or cited it
+correctly.[^Huang2024Survey]
 
-<mark>For tasks requiring up-to-date information, it is essential to provide the latest context within your query</mark> (e.g., current events, recent technology updates, or new legal policies). While some AI models can access the internet to retrieve real-time updates, this capability varies across platforms and may not always be reliable. Importantly, a language model’s underlying knowledge base does not update automatically. Without additional context, the model may generate outdated or inaccurate information, a phenomenon often referred to as *hallucination*. In such cases, the model produces answers that sound confident and plausible but are factually incorrect or misleading.[^Huang2024Survey] [^Raunak2021Curious]
+Reduce the risk by:
 
-- **Example**: If you ask a language model about the health benefits of a fictional fruit, it may provide a detailed response based on its general knowledge of fruits, even though the fruit doesn’t exist.
-- **Mitigation**: When using language models, be cautious with answers that seem too specific or detailed, especially in niche or fictional contexts. Cross-check the information with reliable sources to verify its accuracy.
+- supplying authoritative material and limiting factual claims to it;
+- requesting claim-to-source locations rather than a bare bibliography;
+- opening every important reference and checking that it supports the claim;
+- recalculating quantitative results with an appropriate tool; and
+- removing claims that a qualified reviewer cannot verify.
 
-You should always <mark>critically evaluate the outputs</mark>, especially when the AI is used for research, teaching, or publishing. If the answer seems implausible or too specific, it’s wise to verify it independently.
+Asking the same model whether its answer is correct is not independent
+verification. See [Plan, verify, and explain](/prompting/chain_of_thought_prompting)
+for checkable prompt patterns.
 
-### Reducing the likelihood of hallucinations
+## Outdated or misplaced knowledge
 
-To reduce hallucinations, provide authoritative source material, define what the response may rely on, and request checkable claim-to-source links. For complex work, use [Plan, verify, and explain](/prompting/chain_of_thought_prompting) to define success criteria and validation steps.
+A model’s training knowledge has a cutoff and may mix jurisdictions, versions,
+disciplines, or historical periods. Search-enabled products can still retrieve
+an outdated page or apply it incorrectly. Current law, policy, clinical
+guidance, product behaviour, and research require current authoritative sources.
 
-However, no technique can guarantee that the model will always produce accurate information. Therefore, it’s crucial to verify the AI's output against reliable sources, especially when dealing with factual claims or sensitive topics.
+## Variability and reproducibility
 
-### Fact-checking AI-generated outputs
+The same prompt may not return the same answer each time. Product updates,
+model changes, settings, retrieved sources, and conversation history can also
+change results. For a repeated workflow, record the tool and date, test several
+representative and difficult inputs, and define what human review must catch.
+Re-test after meaningful changes.
 
-Fact-checking the final output is necessary. If the case study includes any factual claims (data points, historical events, names of laws, etc.), verify each one from a reliable source. For example, if the AI narrative says “Carbon emissions in 2020 were X metric tons” or “Study Y found Z”, double-check those facts. 
+## Incomplete context and instruction failures
 
-If the AI did not provide sources, you can do a quick web search yourself or use your subject matter expertise to validate the information. A good practice is to prompt the AI to provide sources for factual claims and then check those sources. If the AI can’t provide a source, treat the information with skepticism. However, <mark>don’t take AI-generated references at face value – always confirm</mark>.[^Welborn2023ChatGPT] In one notorious incident, lawyers using ChatGPT got in trouble because the AI fabricated legal case citations that looked real.[^Merken2023New] Examine the provided sources to ensure they are legitimate and that the AI correctly summarized them. If you’re not sure about a fact and can’t verify it, it’s safest to remove it or replace it with a more general statement.
+Models have limited context and may overlook a requirement buried in a long
+conversation or document. They can follow instructions found inside supplied
+content, confuse examples with the task, or satisfy one constraint while
+violating another.
 
-Ensuring accuracy is crucial not only to avoid misleading students but also to maintain your credibility as an instructor.
+Separate instructions from sources, make success criteria explicit, and inspect
+the output against each criterion. Do not assume that a confident statement
+such as “all requirements were met” is itself evidence.
 
-## Biased training data
+## Bias and uneven performance
 
-Language models are trained on vast datasets sourced from the internet, books, and other materials. These datasets inevitably reflect the subtle (or not so subtle) biases present in their sources. As a result, <mark>the model's outputs can unintentionally reinforce stereotypes</mark>, cultural biases, or inaccuracies.[^Ntoutsi2020Bias]
+Training data and product design reflect social and linguistic inequalities.
+Outputs can reproduce stereotypes, centre dominant perspectives, or perform
+unevenly across languages, dialects, disabilities, disciplines, and cultural
+contexts.[^Ntoutsi2020Bias]
 
-**Examples**
+A generic request to “be unbiased” is insufficient. Use representative test
+cases, name perspectives the task must consider, inspect omissions as well as
+explicit stereotypes, and involve people with relevant contextual knowledge.
+Provide another way to complete a required activity when access or performance
+is not equitable.
 
-- **Gender bias**: Default assumptions about roles, e.g., associating “nurse” with women or “engineer” with men.
-- **Cultural bias**: Overrepresentation of certain cultural perspectives while neglecting others.
-- **Political bias**: Responses that reflect the political leanings of the data sources.
+## Excessive agreement and automation bias
 
-AI can inadvertently perpetuate harm when biased outputs are used uncritically. It's essential for users to review and contextualize the responses, especially in sensitive or high-stakes scenarios.
+A conversational model may accept a mistaken premise, mirror the user’s framing,
+or produce reasons for a preferred conclusion. Users can then give polished AI
+output more weight than equally strong human evidence.
 
-### Check for biases in AI-generated outputs
+Ask for counterevidence, alternative interpretations, and assumptions, but keep
+the final evaluation with a person who can inspect the original sources. A
+human approval step is meaningful only when the reviewer has time, expertise,
+and authority to disagree.
 
-Read the output with an eye for any unintended bias or stereotype. Ensure that the output portrays individuals and groups respectfully. For example, if the AI made all scientists in the story male by default, you might choose to change some names or descriptions to be more inclusive. Check for any language that might be insensitive or triggering for your students. It’s wise to diversify names, contexts, and examples in your cases deliberately. If your output touches on a cultural or social issue, be extra cautious and perhaps have a colleague review it as well to ensure it’s presented in a balanced way or with appropriate sensitivity.
+## Learning can be displaced
+
+An efficient output is not necessarily an educational benefit. If the model
+performs the thinking, writing, calculation, retrieval, or practice that a
+student is meant to develop, it can remove the learning opportunity. Begin with
+the outcome, then decide whether AI should be absent, limited, optional, or an
+explicit object of study.
+
+## A quick review checklist
+
+Before using an output, ask:
+
+- Which claims can I verify, and against what source?
+- What might be missing, simplified, or out of date?
+- Whose perspective or language is advantaged?
+- Did the model follow every important constraint?
+- Would a different run materially change the result?
+- What work did the model replace, and was that work part of the learning?
+- Who is accountable if the output is wrong?
 
 ## References & Footnotes
 
-[^Martino2023Knowledge]: Martino, A., Iannelli, M., & Truong, C. (2023). **Knowledge injection to counter large language model (LLM) hallucination**. In C. Pesquita, H. Skaf-Molli, V. Efthymiou, S. Kirrane, A. Ngonga, D. Collarana, R. Cerqueira, M. Alam, C. Trojahn, & S. Hertling (Eds.), *The Semantic Web: ESWC 2023 Satellite Events* (Vol. 13998, pp. 182–185). Springer Nature Switzerland. https://doi.org/10.1007/978-3-031-43458-7_34
+[^Huang2024Survey]: Huang, L., Yu, W., Ma, W., Zhong, W., Feng, Z., Wang, H., Chen, Q., Peng, W., Feng, X., Qin, B., & Liu, T. (2024). **A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions**. *ACM Transactions on Information Systems*. https://doi.org/10.1145/3703155
 
-[^Merken2023New]: Merken, S. (2023, June 26). **New York lawyers sanctioned for using fake ChatGPT cases in legal brief**. Reuters. https://www.reuters.com/legal/new-york-lawyers-sanctioned-using-fake-chatgpt-cases-legal-brief-2023-06-22/
-
-[^Ntoutsi2020Bias]: Ntoutsi, E., Fafalios, P., Gadiraju, U., Iosifidis, V., Nejdl, W., Vidal, M., Ruggieri, S., Turini, F., Papadopoulos, S., Krasanakis, E., Kompatsiaris, I., Kinder‐Kurlanda, K., Wagner, C., Karimi, F., Fernandez, M., Alani, H., Berendt, B., Kruegel, T., Heinze, C., … Staab, S. (2020). **Bias in data‐driven artificial intelligence systems—an introductory survey**. *WIREs Data Mining and Knowledge Discovery*, *10*(3), e1356. https://doi.org/10.1002/widm.1356
-    
-[^Huang2024Survey]: Huang, L., Yu, W., Ma, W., Zhong, W., Feng, Z., Wang, H., Chen, Q., Peng, W., Feng, X., Qin, B., & Liu, T. (2024). **A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions**. *ACM Transactions on Information Systems*, 3703155. https://doi.org/10.1145/3703155
-
-[^Raunak2021Curious]: Raunak, V., Menezes, A., & Junczys-Dowmunt, M. (2021). **The curious case of hallucinations in neural machine translation**. *Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies*, 1172–1183. https://doi.org/10.18653/v1/2021.naacl-main.92
-
-[^Welborn2023ChatGPT]: Welborn, A. (2023, March 9). **ChatGPT and Fake Citations**. *Duke University Libraries Blogs*. https://blogs.library.duke.edu/blog/2023/03/09/chatgpt-and-fake-citations
+[^Ntoutsi2020Bias]: Ntoutsi, E., Fafalios, P., Gadiraju, U., Iosifidis, V., Nejdl, W., Vidal, M., Ruggieri, S., Turini, F., Papadopoulos, S., Krasanakis, E., Kompatsiaris, I., Kinder‐Kurlanda, K., Wagner, C., Karimi, F., Fernandez, M., Alani, H., Berendt, B., Kruegel, T., Heinze, C., … Staab, S. (2020). **Bias in data‐driven artificial intelligence systems—an introductory survey**. *WIREs Data Mining and Knowledge Discovery, 10*(3), e1356. https://doi.org/10.1002/widm.1356

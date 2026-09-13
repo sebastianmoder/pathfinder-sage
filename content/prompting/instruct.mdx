@@ -1,51 +1,69 @@
-import Chat from '../../components/chat'
+import { Callout } from 'nextra/components'
 
-# Instruct the Model Throughout the Prompt
+# Use Explicit, Actionable Instructions
 
-Instructive language is the key to achieving clear, actionable, and useful outputs. Unlike descriptive language, which merely provides information, <mark>instructive language guides the model step-by-step</mark>, ensuring it understands not just what the task is, but how to approach it.[^Lin2024EffectivePrompts]
+*Last reviewed: 13 September 2026*
 
-## The Importance of Instructive Prompts
+A prompt should tell the model what action to perform. Context without an action
+often produces a generic continuation; an action with no criteria produces a
+result that may look useful without meeting the teaching need.[^Lin2024EffectivePrompts]
 
-Generative AI models process instructions more effectively when they are framed as explicit actions. For example, instead of saying, "<span mark-color="red">This is an excerpt</span> discussing […]", an instructive prompt would say, "<span mark-color="green">Read the following excerpt</span> discussing…" This proactive phrasing eliminates ambiguity, directing the model to perform the task instead of simply recognizing the content.[^Liu2023PromptSurvey]
+## Turn background into a task
 
-Instructive language ensures the model delivers exactly what you need. By specifying the type of analysis or output you want, such as “Provide feedback on grammar, clarity, coherence, argument quality, and use of evidence, scoring each from 1-10,” you reduce the risk of irrelevant or incomplete responses.
+Compare these prompts:
 
-AI can <mark>handle multi-step or nuanced tasks more effectively</mark> when guided with instructive prompts. For instance, asking the model to “Analyze the following text and provide feedback on specific criteria, including examples where applicable,” ensures it knows to both evaluate and substantiate its assessments. Without this guidance, the model might default to generalities, which can dilute the quality of its output.
+```text
+This is a draft activity about supply and demand for first-year students.
+[activity]
+```
 
----
+```text
+Review the draft activity for first-year economics students.
 
-**Example of an instruction-based prompt**
+Check whether students must apply both supply and demand, whether the necessary
+information is present, and whether the task can be completed in 20 minutes.
+For each problem, quote the relevant wording and propose one revision. Do not
+add concepts that have not been taught.
 
-<Chat 
-  userMessage={`Read the following excerpt from an essay:
+[activity]
+```
 
-"Despite the popular belief, there's no solid evidence supporting the idea that video games lead to violent behavior. Research on the topic is often contradictory and inconclusive. Some studies found a correlation, but correlation doesn't imply causation. So, it's premature to blame video games for violence in society."
+The second prompt identifies the action, criteria, evidence, constraint, and
+desired revision. These details matter more than polite phrasing or an elaborate
+persona.
 
-Provide feedback on this excerpt based on the following criteria: grammar, clarity, coherence, argument quality, and use of evidence. Assign a score from 1-10 for each attribute, along with reasoning for your score.`} 
-  assistantMessage={`1.	Grammar (Score: 10/10)
-	•	The grammar is flawless. The sentences are well-constructed, and there are no grammatical errors, awkward phrasing, or typos.
-	
-2.	Clarity (Score: 9/10)
-	•	The excerpt is easy to read and understand. Each sentence communicates its point effectively. However, the phrase “correlation doesn’t imply causation” might be more accessible to a broader audience if explained briefly (e.g., “correlation doesn’t imply causation, meaning a link doesn’t necessarily mean one causes the other”).
-	
-3.	Coherence (Score: 8/10)
-	•	The ideas flow logically from one to the next, starting with the claim about popular belief, moving to research findings, and concluding with the argument that blaming video games is premature. However, the conclusion could be tied back more explicitly to the introductory statement for greater cohesion.
-	
-4.	Argument Quality (Score: 7/10)
-	•	The argument is reasonable and balanced but lacks depth. It mentions the contradictory nature of research without elaborating on specific studies or providing examples, which would strengthen the argument. Furthermore, addressing potential counterarguments (e.g., why some believe the correlation is significant) would make the reasoning more robust.
-	
-5.	Use of Evidence (Score: 6/10)
-	•	While the excerpt references research, it is vague about specifics. Mentioning particular studies or findings (even briefly) would lend credibility and persuasiveness to the argument. As it stands, the lack of concrete evidence weakens the impact.`} 
-/>
+## Use instructions at the point of need
 
-Note the following points from the example above:
+- Introduce source material with an action: “Use the excerpt below to…”
+- State boundaries beside the task: “Use only these sources for factual claims.”
+- Define missing-information behaviour: “Ask if an essential input is absent.”
+- Specify an output that supports review: “Return a table mapping each claim to
+  its source passage.”
+- End with a check: “Compare the draft with every criterion before returning it.”
 
-- **Instruct throughout the entire prompt**, e.g., by writing `Read the following excerpt...` instead of `This is an excerpt...`
-- **Clearly specify the requirements**, e.g., by providing `...the following criteria: grammar, `
-- **Clearly specify the desired output format**, e.g., by asking the model to `Provide a score from 1-10 for each attribute, along with reasoning for your score.`
+Avoid vague instructions such as “make it better”, “be accurate”, or “ensure
+quality”. Name what better means and how you will verify it.
+
+<Callout type="warning">
+  Do not ask a model to score student work against improvised criteria. Supply
+  the approved assignment and rubric, protect student data, and keep the final
+  judgment with the educator. See [Providing feedback with AI
+  support](/teaching/feedback).
+</Callout>
+
+## A compact instruction pattern
+
+```text
+Action: [create, compare, extract, critique, transform, or check]
+Object: [the material or question]
+Criteria: [what a successful result must contain]
+Evidence: [what the response may rely on]
+Constraints: [audience, scope, length, and boundaries]
+Output: [the most useful structure]
+Uncertainty: [what to do when information is missing]
+Verification: [checks before returning the result]
+```
 
 ## References & Footnotes
 
-[^Lin2024EffectivePrompts]: Lin, Z. (2024). **How to write effective prompts for large language models**. *Nature Human Behaviour*, *8*, 611–615. https://doi.org/10.1038/s41562-024-01847-2
-
-[^Liu2023PromptSurvey]: Liu, P., Yuan, W., Fu, J., Jiang, Z., Hayashi, H., & Neubig, G. (2023). **Pre-train, prompt, and predict: A systematic survey of prompting methods in natural language processing**. *ACM Computing Surveys*, *55*(9), 1–35. https://doi.org/10.1145/3560815
+[^Lin2024EffectivePrompts]: Lin, Z. (2024). **How to write effective prompts for large language models**. *Nature Human Behaviour, 8*, 611–615. https://doi.org/10.1038/s41562-024-01847-2

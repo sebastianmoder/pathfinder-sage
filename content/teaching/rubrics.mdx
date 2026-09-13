@@ -1,4 +1,14 @@
+import { Callout } from 'nextra/components'
+
 # Using Generative AI to Create Effective Assessment Rubrics
+
+*Last reviewed: 13 September 2026*
+
+<Callout type="warning">
+  Build the rubric from approved outcomes and the assignment—not from student
+  submissions. Do not upload identifiable work to an unapproved tool, and do
+  not let the model determine a grade.
+</Callout>
 
 ## The Role of Rubrics in Effective Assessment
 
@@ -26,6 +36,38 @@ However, LLMs do not know your course goals unless you tell them, and they canno
 2. Prompt for a first draft: Ask for criteria and level descriptors, and specify the number of levels and any required dimensions (e.g. evidence, reasoning, methodology, reflection).
 3. Review and revise: Remove irrelevant criteria, tighten vague descriptors, and ensure the rubric matches your course language and standards.
 4. Sanity-check: Ask a colleague to read the rubric, or test it on 1–2 sample submissions to see if the levels are distinguishable and the criteria are assessable.
+
+## Copyable rubric-drafting prompt
+
+```text
+Draft an analytic rubric using only the supplied assignment, learning outcomes,
+and required standards.
+
+For each criterion:
+- map it to one or more learning outcomes;
+- describe observable evidence rather than personality, effort, or intent;
+- write four performance levels with differences that another qualified grader
+  could distinguish; and
+- flag overlap, missing evidence, or requirements unsupported by the assignment.
+
+Return:
+1. an outcome-to-criterion mapping;
+2. the draft rubric table;
+3. questions the educator must resolve; and
+4. a checklist for testing the rubric on synthetic anchor responses.
+
+Do not add presentation, language, citation, or formatting criteria unless the
+supplied outcomes or assignment require them. Do not assign weights when their
+relative importance has not been provided.
+
+[assignment]
+[learning outcomes]
+[required standards]
+```
+
+After drafting, apply the rubric to several educator-created or appropriately
+authorised anchor responses. Revise descriptors when graders cannot identify
+the same evidence or when adjacent levels are not meaningfully distinct.
 
 ## Best Practices for AI-Assisted Rubric Development
 

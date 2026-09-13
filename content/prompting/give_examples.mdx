@@ -1,77 +1,84 @@
-import Chat from '../../components/chat'
+import { Callout } from 'nextra/components'
 
-# Provide Examples
+# Provide Examples to Guide the Output
 
-Few-shot prompting is a powerful technique in prompt engineering that involves <mark>providing the model with examples of desired responses</mark> before asking it to generate new output. By showing the AI how to respond, you can guide it toward the correct format, tone, and level of detail, especially in complex or nuanced tasks.[^Brown2020Language] This approach is especially helpful for “training” the model on specific expectations within a single prompt.
+*Last reviewed: 13 September 2026*
 
-Imagine you’re a teaching assistant explaining a tricky concept to students. Rather than just explaining it once, you go through a few worked examples, showing step-by-step how to tackle similar problems. By seeing these examples, students understand how to approach their own problems in a similar way.
+Examples can demonstrate a distinction, structure, tone, or level of detail that
+would be cumbersome to describe. This is often called few-shot prompting. It
+guides the current response; it does not retrain the model.[^Brown2020Language]
 
-Few-shot prompting works the same way for AI. By providing a set of examples, you’re essentially “teaching” the model to recognize patterns and expectations, setting it up to produce responses that match your goals. The model, like a student, can then apply what it’s “learned” in a structured, consistent, and relevant way.
+## When examples help
 
-## What is Few-Shot Prompting
+Use examples when:
 
-In few-shot prompting, you offer the model a few examples that <mark>illustrate the desired response style, content, and format</mark>. These examples act as mini-tutorials, showing the model what to do so that it can <mark>mimic the same structure and approach in its output</mark>. Think of it as giving a “sample set” so the model can “learn by example” within the prompt.
+- categories depend on course-specific definitions;
+- a response must follow a particular format;
+- acceptable and unacceptable outputs differ subtly; or
+- the required tone is easier to show than describe.
 
-Few-shot prompting typically uses <mark>two to five examples</mark> to balance clarity with conciseness. This technique can help the model perform tasks like answering questions, translating, formatting data, or solving problems with greater precision.
+An example is unnecessary when the task and output are already unambiguous. One
+representative example may be enough; complex boundaries may need several.
+Quality and coverage matter more than a fixed number.
 
-## Benefits of Few-Shot Prompting
+## Build a useful example set
 
-- **Contextual Guidance**: By seeing examples, the AI understands what the output should look like, reducing ambiguity and improving relevance.
-- **Consistency in Output**: Examples create a reference point, helping the AI produce responses in a similar tone, style, or structure.
-- **Improved Accuracy for Complex Tasks**: For intricate prompts, few-shot examples clarify expectations, leading to more accurate and targeted responses.
+- Keep the input and output labels consistent.
+- Use examples that resemble the real task.
+- Cover important boundaries, not only easy cases.
+- Check every example: the model may reproduce its errors and biases.
+- Separate examples clearly from the new input.
+- State which features should transfer and which are incidental.
 
-## How to Use Few-Shot Prompting
+## Example: classifying feedback comments
 
-- **Select Clear, Relevant Examples**: Choose examples that best illustrate your ideal output. Ensure they align with the task and highlight specific qualities you want in the final response.
-- **Provide Examples in a Consistent Format**: Structure each example consistently to reinforce the desired pattern, tone, or format for the model to follow.
-- **Guide the Model with a Final Prompt**: After the examples, give a prompt that closely mirrors the examples’ format, ensuring the model understands to apply the demonstrated style to the new task.
+Suppose an educator wants to distinguish feedback grounded in observable work
+from unsupported judgments.
 
-## Example of Few-Shot Prompting
+```text
+Classify each comment as EVIDENCE-LINKED or UNSUPPORTED. Then give one sentence
+explaining the classification. Follow the distinctions in the examples.
 
-**A prompt without examples**
+<example>
+Comment: "Your second paragraph states the conclusion but does not cite or
+analyse evidence for it."
+Classification: EVIDENCE-LINKED
+Reason: The comment points to a location and an observable omission.
+</example>
 
-<Chat 
-  userMessage='Who wrote pride and prejudice?' 
-  assistantMessage='Pride and Prejudice was written by Jane Austen. It was first published in 1813 and remains one of her most popular and enduring works, known for its witty social commentary and memorable characters like Elizabeth Bennet and Mr. Darcy.' 
-/>
+<example>
+Comment: "You did not put enough effort into this assignment."
+Classification: UNSUPPORTED
+Reason: The comment infers motivation rather than describing evidence in the
+work.
+</example>
 
----
+<new_input>
+Comment: "The graph labels revenue in euros, but the explanation discusses the
+values as percentages."
+</new_input>
 
-**A prompt with examples**
+Return exactly:
+Classification: [label]
+Reason: [one sentence]
+```
 
-<Chat 
-    userMessage={`Example 1:
-Q: "What is the capital of France?"  
-A: "The capital of France is Paris."
+The examples teach both the labels and the output pattern. The final format
+instruction prevents incidental features, such as quotation marks, from being
+mistaken for the important distinction.
 
-Example 2:  
-Q: "What is the largest planet in our solar system?"  
-A: "The largest planet in our solar system is Jupiter."
+<Callout type="warning">
+  Do not paste identifiable student work merely to create examples. Use
+  synthetic excerpts unless the tool and workflow are institutionally approved
+  for the material.
+</Callout>
 
-Q: "Who wrote Pride and Prejudice?"`}
-    assistantMessage='A: “The author of ‘Pride and Prejudice’ is Jane Austen.”'
-/>
+## Specify format and style directly
 
-{/* TODO: Callout to mention that the structure was replicated with the A: and the quotation marks. */}
-
-
-
-{/* TODO: A good and education-related few-shot prompt. */}
-
-{/* TODO:  
-
-notes to integrate:
-
-# Specify the desired output format and style
-
-Be clear about what you want. Specify the format, style, and any particular details.
-
-- length (e.g., one sentence, one paragraph, one page)
-- format (e.g., bullet points, running text, JSON)
-- language & style
-
-*/}
+Examples work best alongside explicit requirements. State the intended length,
+structure, language, tone, and audience. Do not rely on the model to infer which
+features of an example matter.
 
 ## References & Footnotes
 
-[^Brown2020Language]: Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D. M., Wu, J., Winter, C., … Amodei, D. (2020). **Language models are few-shot learners**. *arXiv*. https://doi.org/10.48550/arXiv.2005.14165
+[^Brown2020Language]: Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D. M., Wu, J., Winter, C., … Amodei, D. (2020). **Language models are few-shot learners**. *Advances in Neural Information Processing Systems, 33*. https://proceedings.neurips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html

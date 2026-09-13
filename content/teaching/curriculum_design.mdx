@@ -3,42 +3,59 @@ import { Callout } from 'nextra/components'
 
 # Using Generative AI for Curriculum Design
 
-Generative AI can be a powerful partner in curriculum design, helping educators streamline planning, spark new ideas, and save valuable time.[^Moundridou2024EducatorsAssistants] Below is a practical, step-by-step approach to integrating AI into your curriculum design process. 
+*Last reviewed: 13 September 2026*
+
+Generative AI can organise supplied requirements, propose alternatives, and
+draft planning artefacts.[^Moundridou2024EducatorsAssistants] Curriculum quality
+still depends on constructive alignment, disciplinary judgment, institutional
+requirements, and knowledge of the students and program.
 
 <Steps>
 
 ## Establish the Purpose of the Course
 
-Before utilizing AI tools, <mark>clarify the instructional purpose behind your lesson</mark>. Lesson plans should not exist solely to satisfy compliance requirements; they serve as the foundation for meaningful, standards-aligned instruction.[^Biggs1996Alignment]
+Before using AI, clarify the course purpose and its place in the wider program.
+Constructive alignment connects intended outcomes with teaching activities and
+assessment evidence.[^Biggs1996Alignment]
 
 AI can generate lesson components quickly, but effective planning requires thoughtful input. Instead of accepting the first response an AI provides, approach the process with a commitment to quality and relevance. Ask yourself:
 - What do my students need to learn?
 - How does this course connect to larger program goals, learning outcomes, or standards?
 - What outcomes, knowledge, or skills will have the greatest impact on student growth?
 
-When you provide clear objectives and context, AI can generate more relevant and meaningful materials. Rather than accepting the first draft AI produces, refine its output to ensure it aligns with your vision and the unique needs of your students. 
+Provide approved requirements and context, then treat any generated structure as
+a draft to test against them.
 
 <Callout>
    **Example prompt:** 
    
-   `Help me design a syllabus for an advanced biology course focused on critical analysis of research papers, emphasizing collaborative learning.`
+   `Using the supplied program outcomes and constraints, propose two possible structures for an advanced biology course focused on critical analysis of research papers. Map each unit and assessment to an outcome, flag missing information, and do not invent institutional requirements.`
 </Callout>
 
-## Begin with the Standards
+## Begin with Program Requirements and Learning Outcomes
 
-Effective lessons begin with the standards. Standards define the proficiency levels students must achieve and establish the necessary rigor for the lesson. AI can support this process by deconstructing complex standards into clear, teachable goals.
+Effective curriculum design begins with the approved program outcomes,
+qualification framework, professional or accreditation requirements, and local
+policies. AI can help organise supplied requirements into candidate course
+outcomes, but it should not invent or interpret authoritative requirements on
+its own.
 
-Once the key learning goals are identified, refine them to ensure they promote higher-order thinking and can be assessed effectively. AI can revise goals using frameworks like Bloom’s Taxonomy to emphasize analysis, evaluation, and creation.
+Review proposed outcomes for clarity, level, assessability, and coverage. Bloom’s
+Taxonomy can help describe cognitive demand, but higher levels are not
+automatically more appropriate; the level must fit the program and learner stage.
 
 <Callout>
    **Example prompt:**
    
-   `Rewrite these learning objectives to emphasize higher-order thinking using Bloom’s Taxonomy.`
+   `Using the supplied program outcomes, review these course outcomes for clarity, assessability, level, and coverage. Propose revisions without introducing requirements absent from the source. Return an outcome-to-program mapping and flag gaps.`
 </Callout>
 
-## Provide Context on the Lesson
+## Provide Course Context
 
-Begin by asking an AI to draft a course outline or syllabus based on your subject, goals, and duration of the course. For example, provide the AI with the course title, key topics to cover, number of weeks, and assessment types, and ask it to generate a syllabus. You might get a rough weekly breakdown of themes, readings, and assignments in seconds. Use this AI-generated syllabus as a starting point – it’s much easier to refine or rearrange an existing outline than to start from scratch.
+Provide the course title, credits or expected workload, learner level, duration,
+prerequisites, approved topics, assessment constraints, available resources, and
+accessibility requirements. Ask for an outcome-to-unit map before a detailed
+weekly schedule so gaps and unnecessary topics remain visible.
 
 ## Create Course Materials and Reading Lists
 
@@ -50,22 +67,54 @@ See [Creating and Revising Exam Questions](/teaching/exam_questions).
 
 ## Enhance Interactive Learning Experiences
 
-Curriculum design isn’t just about content – it's also about how students will engage. AI can assist in brainstorming interactive elements to include in your course.[^Moundridou2024EducatorsAssistants] For example, you could ask an AI to "`suggest some engaging in-class activities or projects for a unit on [Subject]`". Educators have used AI to come up with simulation ideas, debate prompts, or collaborative project outlines. Some advanced uses include creating role-play scenarios: an AI can generate a script where it "acts" as a historical figure or an industry expert for students to interview (see [Assign the Model a Job](/prompting/assign_job)), bringing variety to the learning experience. Others have explored AI-generated educational games; with the right prompt, an AI might outline a simple game or puzzle related to your content. For example, an instructor asked an AI to simulate a student peer in a discussion, which was then used to pose questions to the class, stimulating critical thinking in an interactive way. 
-
-When planning your curriculum, you can incorporate these AI-inspired activities to make the course more dynamic. Just ensure any AI-driven activity is feasible and aligns with your learning goals (you’ll know your class constraints better than the AI).
+AI can propose discussions, cases, simulations, collaborative problems, or
+projects.[^Moundridou2024EducatorsAssistants] Request student actions and
+observable evidence, not merely “engaging activities”. Reject novelty that does
+not serve an outcome, cannot be completed with available resources, or creates
+avoidable participation barriers.
 
 <Callout>
    **Example prompt:**
    
-   `Suggest a role-play activity to help students understand competing perspectives in environmental policy.`
+   `Using the supplied outcome and policy sources, propose a 30-minute role-play in which students compare competing environmental-policy perspectives. State what students do, what evidence of learning is observable, what preparation is required, and an accessible non-role-play alternative.`
 </Callout>
 
 </Steps>
 
-At each step of curriculum design, remember to inject your expertise and context. AI can generate a lot of material quickly, but it doesn't understand your specific students, school context, or the precise emphasis you want for your course. Use AI’s suggestions as a springboard: pick the best ideas, adjust phrasing and difficulty, and toss out anything that doesn't fit. When used this way, AI can greatly accelerate the curriculum design process and even spark creative ideas you might not have thought of, all while you remain in control of the final course plan.
+## Worked alignment example
 
+Suppose an outcome says: “Evaluate competing environmental-policy proposals
+using economic, distributional, and implementation evidence.” Instead of asking
+for generic engaging activities, supply the outcome and relevant course sources:
 
-{/* TODO: Using AI to plan interactive lessons */}
+```text
+Propose three activities for this outcome: one preparation task, one 30-minute
+class activity, and one formative check.
+
+For each activity, state:
+- what students do;
+- which part of the outcome they practise;
+- what evidence of learning the educator can observe;
+- required prior knowledge and materials;
+- accessibility or participation barriers; and
+- one feasible alternative.
+
+Use only the supplied course sources for factual content. Do not require an AI
+tool unless AI literacy is part of the outcome.
+```
+
+A suitable result might pair a short evidence-comparison task with a stakeholder
+negotiation and an individual written justification. The educator should reject
+ideas that are merely entertaining, cannot be assessed, duplicate another
+activity, or cannot be completed with the available time and access.
+
+Before finalising the curriculum, build a matrix linking every course outcome to
+learning activities and assessment evidence. Gaps in either column indicate
+that the curriculum is not yet constructively aligned.
+
+Use AI output to expose choices, not to approve the curriculum. The responsible
+course team must verify requirements, workload, progression, assessment,
+accessibility, and coherence and remain able to justify the final design.
 
 
 ## Further Reading

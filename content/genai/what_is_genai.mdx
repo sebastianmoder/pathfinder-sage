@@ -1,43 +1,88 @@
-# Introduction to (Generative) Artificial Intelligence
+import { Callout } from 'nextra/components'
 
-## What is AI?
+# What Is Generative AI?
 
-At its core, <mark>Artificial Intelligence (AI) describes algorithms that learn from data</mark> to perform tasks that typically require human intelligence.[^LeCun2015DeepLearning] This learning process results in the creation of a "model"—a representation of patterns in the data. For example, in weather analysis, if clouds consistently form before it rains, the model can infer that cloud formation may indicate impending rain.
+*Last reviewed: 13 September 2026*
 
-## What is generative AI?
+## AI, machine learning, and generative AI
 
-Generative AI is a fascinating branch of AI that focuses on creating new content, such as text, images, music, or even videos. Unlike traditional AI, which primarily handles specific tasks like classifying or predicting outcomes, <mark>generative AI produces outputs that resemble human-created content</mark>.[^Goodfellow2020GANs] 
+Artificial intelligence is an umbrella term for computer systems designed to
+perform tasks associated with capabilities such as perception, prediction,
+language, planning, or decision support. Machine learning is one way of building
+such systems: instead of encoding every rule directly, developers train a model
+to identify patterns in data.
 
-One key type of generative AI is Large Language Models (LLMs), which are trained on vast amounts of text data. These models can perform a wide range of tasks, such as writing poems, answering questions, or simulating conversations, by generating coherent and contextually relevant text.[^Kumar2024LLMSurvey]
+Generative AI produces new content—such as text, images, audio, video, or
+code—from a user’s instructions and other inputs. Large language models (LLMs)
+are generative models trained to predict and produce sequences of language.
+Their ability to generate plausible text does not mean that they understand a
+subject, hold beliefs, or consult a reliable database of facts.[^Bender2021Parrots]
 
-<mark>Think of generative AI as a highly capable but inexperienced assistant: eager to help but dependent on clear instructions to deliver optimal results.</mark> This highlights the importance of learning how to craft effective prompts—text commands or questions that guide the AI. A prompt is typically a text command, like “Tell me a joke.” [Writing effective prompts](/prompting) is crucial for getting the best results from AI.
+## Model and product are not the same
 
-## How can generative AI be used?
+A model is the underlying system. A product may combine one or more models with
+search, uploaded files, calculators, code execution, memory, safety rules, and
+an interface. Two products using a related model can therefore behave
+differently, and the same product can change after an update.
 
-Generative AI is a versatile tool that can automate creative and repetitive tasks, saving time and boosting productivity. Furthermore, AI can generate output on many subjects and has been discussed as a flexible support tool for teaching and learning.[^Kasneci2023ChatGPTEducation] The same tool can help a physics teacher create a case about a space mission gone awry, and help a literature teacher craft a narrative about a character facing a moral decision.  Here are some practical applications:
+When evaluating an educational use, ask about the complete product and workflow:
 
-- **Writing emails and reports**: Streamline routine communication and documentation.
-- **Creating educational materials**: Develop course content, quizzes, and resources.
-- **Simplifying complex concepts**: Reframe or adapt information for different audiences.
-- **Providing personalized feedback**: Tailor suggestions and evaluations to individual needs.
+- What model and additional tools does it use?
+- Can it retrieve current or supplied sources?
+- What happens to prompts, files, and outputs?
+- Does the provider use them for training or product improvement?
+- Can users inspect sources, export work, and delete data?
+- Is the product approved and accessible for the intended learners?
 
-While generative AI is powerful, it isn’t perfect. Often, it provides an 80% solution, giving you a strong foundation to build upon. By freeing up your time to focus on refining and customizing the remaining 20% that really matter, adding your personal touch and expertise to finalize the task.
+## How an LLM produces a response
 
-Artificial Intelligence, and generative AI in particular, is transforming how we work and create. By understanding the basics of AI, learning how to craft effective prompts, and recognizing the capabilities and limitations of these technologies, you can unlock new opportunities for innovation and efficiency in your field. 
+An LLM generates text incrementally from patterns learned during training and
+from the current context. The response depends on the prompt, supplied material,
+system instructions, model version, settings, and sometimes external tools.
+Small changes can produce different results.
 
-<mark>Start experimenting with AI today, and discover how it can free up your time to focus on what truly matters!</mark>
+This explains both the flexibility and the central risk: a model can produce a
+clear, relevant answer even when the answer is unsupported or wrong. Fluency is
+not evidence.
 
-## Further Reading
+<Callout type="info">
+  A useful mental model is a fast, adaptable drafting system whose work must be
+  bounded by appropriate sources and checked by someone able to recognise
+  errors—not an inexperienced human expert or an authoritative reference.
+</Callout>
 
-- Lee, T. B., & Trott, S. (2023, July 27). **Large language models, explained with a minimum of math and jargon**. *Understanding AI*. https://www.understandingai.org/p/large-language-models-explained-with
-- LeCun, Y., Bengio, Y., & Hinton, G. (2015). **Deep learning**. *Nature*, *521*(7553), 436–444. https://doi.org/10.1038/nature14539
+## What generative AI can contribute
+
+Depending on the tool and task, it can help educators or students:
+
+- generate alternatives and questions;
+- transform supplied material into another structure or reading level;
+- draft explanations, activities, examples, code, or media;
+- simulate a perspective for practice;
+- critique work against explicit criteria; or
+- support repeated, low-stakes practice.
+
+These are possible functions, not guaranteed benefits. The educational value
+depends on what the learner does, what the model replaces, the quality of the
+interaction, and the review process.
+
+## What it cannot establish by itself
+
+Model output is not sufficient evidence that:
+
+- a factual claim is true or current;
+- a citation exists and supports the claim;
+- a teaching activity is aligned, inclusive, or feasible;
+- a student understands, authored, or misused a piece of work;
+- a grade or other consequential decision is fair; or
+- using the tool improves learning.
+
+Continue with [Limitations and risks](/genai/limitations), then use [When to use
+generative AI](/genai/when_to_use) before applying a tool to a real task.
 
 ## References & Footnotes
 
-[^Goodfellow2020GANs]: Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Courville, A., & Bengio, Y. (2020). **Generative adversarial networks**. *Communications of the ACM*, *63*(11), 139–144. https://doi.org/10.1145/3422622
+[^Bender2021Parrots]: Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). **On the dangers of stochastic parrots: Can language models be too big?** *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency*, 610–623. https://doi.org/10.1145/3442188.3445922
 
-[^Kasneci2023ChatGPTEducation]: Kasneci, E., Sessler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., Gasser, U., Groh, G., Günnemann, S., Hüllermeier, E., Krusche, S., Kutyniok, G., Michaeli, T., Nerdel, C., Pfeffer, J., Poquet, O., Sailer, M., Schmidt, A., Seidel, T., Stadler, M., Weller, J., Kuhn, J., & Kasneci, G. (2023). **ChatGPT for good? On opportunities and challenges of large language models for education**. *Learning and Individual Differences*, *103*, 102274. https://doi.org/10.1016/j.lindif.2023.102274
-
-[^Kumar2024LLMSurvey]: Kumar, P. (2024). **Large language models (LLMs): survey, technical frameworks, and future challenges**. *Artificial Intelligence Review*, *57*, 260. https://doi.org/10.1007/s10462-024-10888-y
-
-[^LeCun2015DeepLearning]: LeCun, Y., Bengio, Y., & Hinton, G. (2015). **Deep learning**. *Nature*, *521*(7553), 436–444. https://doi.org/10.1038/nature14539
+- National Institute of Standards and Technology. (2024). **Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile**. https://doi.org/10.6028/NIST.AI.600-1
+- UNESCO. (2023). **Guidance for generative AI in education and research**. https://unesdoc.unesco.org/ark:/48223/pf0000386693

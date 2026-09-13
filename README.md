@@ -31,10 +31,12 @@ sections are:
   and guidance on when AI is an appropriate tool.
 - **Basics of Prompt Engineering**: practical prompting techniques for better
   AI-assisted work.
-- **Teachers' Tasks**: guidance for curriculum design, lesson planning, course
-  materials, exam questions, rubrics, and related teaching workflows.
-- **Students' Experiences**: guidance for assessment, tutoring, simulations, AI
-  literacy, and writing instruction.
+- **Teachers' Tasks**: guidance for course and assignment AI rules, curriculum
+  design, lesson planning, course materials, exam questions, rubrics, and
+  related teaching workflows.
+- **Teaching and Learning with AI**: a progressive AI competency pathway plus
+  guidance for assessment, tutoring, simulations, evaluation, and writing
+  instruction.
 - **Draft sections**: incomplete pages live in `drafts/`, outside Nextra's
   routable content tree, until they meet the publication checklist.
 

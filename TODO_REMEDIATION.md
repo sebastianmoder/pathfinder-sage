@@ -21,16 +21,31 @@ content tree.
 - Moved incomplete standalone pages out of `content/` so they are not routed,
   searched, or included in the sitemap.
 
-## Remaining published-content work
+## Completed in the follow-up review
 
-| Priority | File | Required change |
-| --- | --- | --- |
-| High | `content/genai/ai_detection.mdx` | Refresh time-sensitive detector evidence and add links to assessment alternatives, process evidence, and oral follow-up guidance. |
-| High | `content/prompting/assign_job.mdx` | Replace placeholder role-prompt outputs with concrete education examples and explain when roles add little value. |
-| High | `content/prompting/give_examples.mdx` | Add an education-specific few-shot example and publish the commented guidance on structure, format, and style. |
-| Medium | `content/prompting/use_delimiters.mdx` | Add one substantial education prompt with clearly separated context, evidence, constraints, and output sections. |
-| Medium | `content/teaching/lesson_planning.mdx` | Add an explicit outcomes–activities–assessment alignment check. |
-| Medium | `content/teaching/curriculum_design.mdx` | Add a worked example for planning interactive learning. |
+- Rewrote the AI-detection page around what scores can and cannot establish,
+  current independent evidence, fair response procedures, and assessment
+  alternatives.
+- Reworked the prompting guides with higher-education examples, explicit source
+  boundaries, and clearer limits on roles, examples, and delimiters.
+- Added outcomes–activities–assessment alignment checks to lesson and curriculum
+  planning.
+- Added a task-oriented homepage, a course and assignment AI-policy toolkit, and
+  a progressive AI-competency pathway.
+- Revised assessment, writing, tutoring, simulations, and course-material
+  guidance for evidence quality, privacy, access, and human review.
+- Expanded the introductory and limitations pages and updated the 2026 European
+  Commission ethical-guidance reference.
+
+## Future development candidates
+
+- Publish implementation case reports only when they include context,
+  safeguards, observed results, failures, and reusable material.
+- Develop teacher-training facilitation materials from the AI-competency pathway.
+- Add a maintained external-link check to continuous integration.
+- Consider administrative-work guidance after core teaching workflows are
+  validated; keep vendor-specific tool directories unpublished unless someone
+  owns their maintenance.
 
 ## Publication checks
 

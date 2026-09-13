@@ -1,196 +1,181 @@
-import { Callout } from 'nextra/components'
-import { Steps } from 'nextra/components'
+import { Callout, Steps } from 'nextra/components'
 
 # Creating Course Materials with AI
 
-Modern LLM-based AI tools can assist in drafting or brainstorming almost any kind of text-based course content. Here are some of the course materials educators are already creating using generative AI:
+*Last reviewed: 13 September 2026*
 
-- **[Case Studies](#case-studies)**: AI can develop hypothetical scenarios or real-world examples to illustrate concepts and engage students in critical thinking.
-- **[Lecture Slide Content](#lecture-slide-content)**: AI tools can generate slide decks based on a given topic or outline, incorporating key points, visuals, and examples to enhance presentations.
-- **[Reading Lists](#reading-lists)**: AI can suggest relevant articles, books, and resources for students to explore, helping instructors curate comprehensive reading lists.
+Generative AI can help brainstorm or draft cases, slide outlines, examples,
+questions, and reading-list annotations. It should not decide what belongs in a
+course or supply facts and references that an educator cannot verify.
 
-## Case Studies
+<Callout type="warning">
+  Do not upload confidential assessment materials, identifiable student work,
+  unpublished research, or licensed content to an unapproved service. Check
+  copyright, licence, accessibility, and institutional requirements before
+  distributing any generated material.
+</Callout>
 
-With a well-crafted prompt, generative AI can brainstorm scenario ideas, flesh out a narrative, suggest realistic details, and even draft discussion questions in a matter of minutes.[^PrudHommeGenereux2024Writing] Case-based learning itself also has a substantial evidence base across professional education.[^Thistlethwaite2012CBL] It can compile information and weave it into a story, or combine your ideas with a dash of creativity to produce something new. 
+## A reusable production workflow
 
 <Steps>
 
-### Define your learning goal and scenario requirements
+### Begin with the learning purpose
 
-Start by clarifying for yourself what you want the case study to achieve. <mark>What concept or skill should students learn or practice?</mark> Who are your learners (e.g., 11th-grade economics students or first-year undergraduate engineering majors)? And what type of scenario might engage them? Defining these elements will help you craft an effective prompt. For example, maybe you want a case study to help biology students understand bioethics in genetics, or a scenario for history students to debate leadership decisions during a historical event.
+State the outcome, learner level, prior knowledge, teaching setting, available
+time, and how students will use the material. A polished artefact that does not
+serve an outcome creates work rather than saving it.
 
-Take a moment to <mark>outline the topic, learning objective, and difficulty level</mark>. Also consider the format: is this a straightforward problem-solving case, a controversial dilemma with two sides, a role-play scenario, etc.? You don’t need every detail – just know the general direction. Having this context in mind will allow you to instruct the AI with specificity (e.g., "a case about [X] for [Y] students to practice [Z]"). Remember, an AI will take your prompt quite literally; the more clearly you communicate your needs, the better the initial output (if needed, read up on the [basics of prompt engineering](/prompting/)). In short, think like an author: what story setup would best meet your teaching goal?
+### Supply approved source material
 
+Provide the definitions, data, readings, examples, or standards that factual
+content must follow. Ask the model to identify unsupported requirements rather
+than filling gaps. For recent or consequential information, use current primary
+sources.
 
-### Brainstorm case ideas with the AI
+### Request a reviewable draft
 
-If you already have a specific scenario idea, you might skip to Step 3. But often, you might have a general topic in mind and want some creative scenario options. Generative AI is great at brainstorming. You can prompt the LLM to suggest several case study ideas or angles for your topic.
+Choose a structure that exposes important decisions: a claim-to-source column,
+an outcome mapping, speaker notes, answer rationale, or accessibility notes.
+Generate alternatives when selection is useful; do not ask for unnecessary
+volume.
 
-<Callout type="info">**How to prompt**: Give the AI context about your course and students, and ask for a list of possible case scenarios.</Callout>
+### Review content and representation
 
-**Example prompt**: 
+Check every claim, calculation, quotation, reference, example, and answer. Look
+for missing perspectives, stereotypes, invented detail, inappropriate reading
+level, and mismatch with terminology students have learned.
 
-> I am a high school environmental science teacher. I want to create a case study about climate change impacts for my class. The goal is for students to analyze data and debate solutions. Can you suggest 3 different real-world scenarios or controversies related to climate change that would be engaging for 16-18 year old students? Provide a brief description of each scenario.
+### Make the material accessible
 
-Notice we specified the subject, the topic (climate change impacts), the student age, and the learning goal (analyze data and debate solutions). This helps the AI tailor its suggestions. Examine the AI’s suggestions and see which idea resonates and fits your curriculum. You may need to refine your prompt if the ideas are off-target. Don’t hesitate to be specific: for instance, 
+Check headings, reading order, contrast, alt text, captions, transcripts, table
+structure, link text, and compatibility with assistive technology. Simplifying
+language is not a substitute for preserving disciplinary meaning.
 
-> These are a bit too broad; can you focus on controversies that occurred in the last 5 years and involve human genetics?
+### Pilot and retain an editable source
 
-This iterative back-and-forth is normal – think of it as brainstorming with a colleague. Once you have an idea you like, you’re ready to move forward.
-
-### Draft the case narrative
-
-Now that you have a scenario in mind (whether from the AI’s suggestions or your own idea), ask the AI to write the narrative of the case study. This narrative is the story or setup that the students will read. It should introduce the characters (if any), the context, and the core problem or decision to be made. It might end with an explicit question or directive to the student (e.g., "What should Maria do in this situation?").
-
-<Callout type="info">**How to prompt**: Again, provide context and be clear about the output.</Callout> 
-
-You might write something like:
-
-> I am an instructor who teaches a **[MBA finance and investment]** course to **[executive education]** students. I would like to use the controversy over **[ESG investing and its impact on financial returns]** to help students **[critically analyze competing claims in the financial literature]**. I am looking for a short introductory to this controversy that I could give students to introduce this as a case study. Write this introduction. It should be **[no more than 300 words]**. The description should explain the premise of the controversy and end with a clear call for students to evaluate the information and make a decision about their position on this controversy. 
-
-In this prompt, the bracketed parts would be filled with your specifics. Being explicit about length (e.g., no more than 300 words) is helpful to ensure the case fits into your class time or assignment length. Note that LLMs can't count words, so the final output may end up slightly longer or shorter. Also, note how the prompt asks for an introduction that ends with a clear call for a decision – this guides the AI to produce a focused narrative that sets up a dilemma for students to resolve.
-
-When you run this prompt, the AI will generate a draft scenario. Read it carefully. Does it capture the essence of the topic? Is it engaging and appropriate for your students? Often the first output will be a decent but somewhat generic story. You can refine it through further prompts. For example, if the draft is too bland, you might reply to the AI:
-
-> This is a good start, but please make it more engaging by including a concrete real-world example or a specific person as the focus.
-
-You can similarly ask for stylistic tweaks: *Rewrite this in a more conversational tone*, or *Add some humor or an analogy to clarify the science*, or *Shorten this to 200 words*. Each refinement brings the case closer to what you envision. Don’t be afraid to iterate multiple times – this is part of the creative process, and the AI doesn’t mind at all! 
-
-By the end of this step, you should have a solid draft of the case study narrative. It might be a single block of text or a few paragraphs that set the scene and present the central issue. Ensure that it ends with some thought-provoking question or directive for the students, as this will naturally lead into discussion or analysis.
-
-### Enhance the case with details or data
-
-Depending on the nature of your case study, you might want additional supporting information to accompany the main narrative. For example, in a complex case you might provide students with a short data table, an excerpt from a policy, or pro/con arguments on each side of an issue. LLMs can help generate these details as well. This step is optional – for a simple case, the narrative and questions might be enough. But if you’re creating a rich case packet (common in business, science, or social science education), AI can assist in drafting these components.
-
-Some ways you can use AI here:
-
-- **Generating bullet-point briefs**: If your case involves a debate or decision, you might prepare two briefs: one supporting Argument A and one supporting Argument B. You can prompt the AI to gather evidence for each side. Important: if you ask for facts and references, always double-check them (more on that in Step 7)! For instance: 
-  
-  > Provide a list of 5 factual bullet points that someone might use to argue that ESG investing leads to superior financial returns, including data or research findings, with references. 
-  
-  Then follow up with: 
-  
-  > Now provide 5 bullet points for the opposing view (that ESG investing compromises financial performance), also with credible references. 
-
-- **Creating characters or dialogues**: Perhaps you want the case to include a dialogue between stakeholders (e.g., a conversation between a portfolio manager and an ESG analyst, or between two investors with different viewpoints). You can instruct the AI to write a short dialogue. This can add a dynamic element to the case and expose students to multiple angles. For example: 
-  
-  > Write a brief dialogue where a traditional value investor and an impact-focused fund manager debate ESG integration, highlighting their differing perspectives on financial materiality. 
-
-- **Adding realistic data**: If the case study would benefit from some numbers or charts (say, a case about ESG investing might include performance comparison data), you can ask the AI to provide a relevant data point. However, caution is needed: AI can invent data if it doesn't know it, so it's often better to supply known data yourself or verify any AI-provided number. E.g.: 
-  
-  > Give an example statistic about the performance difference between ESG-screened funds and conventional funds in the last decade, and incorporate it into the narrative.
-
-Use these enhancements as needed. The goal is to give students enough information to analyze, without doing the analysis for them. If you do generate additional pieces, integrate them into your case materials clearly (e.g., label them as "Background info" or "Expert testimony" and so on). This extra content can enrich the case, making it more realistic and multidisciplinary. Just remember that more content means more to verify for accuracy.
-
-### Generate discussion questions and activities
-
-A case study isn’t complete without the prompts that will guide student interaction with the case. Often, these are open-ended discussion questions or specific tasks based on the scenario. You can certainly write these yourself, but an AI can also help brainstorm thought-provoking questions.
-
-<Callout type="info">**How to prompt**: Simply ask the AI to propose some questions or activities.</Callout> 
-
-For example: 
-
-> - Suggest three open-ended questions I can ask my students after they read this case, to prompt critical thinking and discussion.
-> - What are some questions that would test students’ understanding and encourage them to apply concepts from class to this scenario? 
-
-The AI might generate questions like "What do you think is the root cause of the conflict between the scientist and the policymaker in this case?" or "Which solution for reducing emissions do you find most convincing, and why?" Ensure the questions cover different aspects: comprehension (e.g. "summarize the problem…"), analysis (e.g. "compare the two proposed solutions…"), and application or opinion (e.g. "what would you do in this situation?"). You can also ask for multiple-choice questions or short exercises if appropriate (e.g. "Give one calculation question related to the data provided.").
-
-Once you have a list of suggested questions, review and edit them. You know your students best – tweak the wording to match their level and your course’s terminology. Maybe you’ll combine two AI-suggested questions into one, or add a totally new question that addresses a point you want to emphasize. Aim for a set of 2–5 questions (or however many fit your activity) that will lead to a fruitful discussion or analysis. These questions can be given to students as an assignment or used to facilitate an in-class discussion or group work session.
-
-At this stage, you have the core components of a case study package: the narrative scenario and the guiding questions (plus any supporting info). The heavy lifting of content generation is done – next comes the crucial task of quality control.
-
-### Review and refine the output
-
-Before you introduce this case study to your students, it’s essential to put on your editor’s hat. Carefully review everything the AI has generated, end-to-end. This step is all about ensuring clarity, correctness, and appropriateness. As you review, consider:
-
-- **Clarity and flow**: Is the narrative clearly written and logically structured? Make sure the scenario will be understandable to your students. Sometimes AI text can be verbose or awkwardly phrased – feel free to rewrite sentences or simplify language. Ensure that the storyline or problem statement is coherent and gets to the point without unnecessary digressions. Paragraphs should be a manageable length for your learners’ reading ability.
-- **Tone and context**: Does the case read in a style that suits your class? If you requested a formal tone but it sounds too stiff for high schoolers, you might loosen up some wording. If it included humor or informal language that might confuse non-native speakers, you might tone it down. The case should feel relevant and engaging to your audience. For cross-disciplinary use, also check that any jargon is explained or minimized. For instance, a case for a general audience shouldn’t assume specialized prior knowledge unless that’s intended.
-- **Fulfills the objective**: Ensure the case actually sets up the teaching objective you had in mind. After reading it, will students be prompted to use the skill or concept you wanted them to practice? Sometimes an AI can drift from the intended focus. If the case study on climate change ended up focusing mostly on one minor aspect, you might need to refocus it. You can always go back to the AI with a prompt like:
-  > Revise the above story to emphasize the economic impacts of the decision more, as that’s a key learning point.
-
-Remember, AI is a tool, not a substitute for your judgment. One marketing expert noted that while AI can generate content quickly, it often produces a first draft that needs human polishing to have the right "heart and soul" and avoid generic tone.[^Burke2023AI]
-
-### Verify facts and check for bias
-
-AI models do not guarantee factual accuracy – they sometimes produce errors or even fabrications (often called hallucinations in AI jargon). They also can reflect biases present in their training data. As an educator, you have a responsibility to ensure the content you give students is accurate and fair. We have discussed strategies to mitigate hallucinations and biases in our section on the [limitations](/genai/limitations) of LLMs. 
-
-Also consider the ethical dimensions of the scenario itself. Is it appropriate for the age group? For instance, a case delving into medical ethics might be perfectly suited to a university bioethics class but too heavy or complex for high schoolers without proper scaffolding. Make sure the depth matches the maturity of your students.
-
-By the end of Step 7, you should have a case study that is factually reliable and culturally considerate. This due diligence upholds academic integrity and models good research practice to students (you could even tell them, "I checked that all the data in this case is accurate," subtly reinforcing the value of verification).
-
-### Pilot and refine
-
-Now you’re ready to use the case study in your teaching! Implement it in your class – perhaps as a reading assignment followed by a class discussion, or an in-class group activity. As you do, observe how students respond. Do they seem engaged and challenged by the scenario? Do their discussions or answers reveal the insights you hoped for? This is the true test of your AI-crafted case.
-
-After using the case, take time to reflect on its effectiveness. Gather feedback: you might ask students what they thought of the scenario – was it realistic, interesting, confusing, etc.? Their reactions can inform improvements. Maybe you discover that some background knowledge was missing and you need to add a short introduction next time, or that the dilemma wasn’t as clear to them as you assumed, so you might tweak the wording. Perhaps the case was great but the questions were too easy, or vice versa. All these insights will help you refine the case if you plan to reuse it, or will guide you in creating future cases with AI.
-
-Remember that using generative AI is a learning process for you as well. The more you practice crafting prompts and editing outputs, the better your results will be. If something didn’t turn out as expected, think about how you could prompt differently or what instructions could be added to the AI next time. For instance, if the students found the case too simplistic, next time you might ask the AI for more nuance and complexity in the narrative. On the other hand, if it was too complex, you could prompt for simpler language or provide a glossary of terms to accompany the case.
-
-It’s also valuable to share your experience with colleagues. As educators, we learn a lot from each other. You might discuss in your department or teacher forums: How are others using AI for lesson design? What prompt phrasings worked well for them? By reflecting and iterating, you’ll become more adept at integrating AI into your workflow in a pedagogically sound way. Consider keeping a journal or log of prompts you used and rating the success of each case – over time, you’ll build a personal "best practices" library.
-
-### Bonus: Tips for customizing complexity and depth
-
-- **State the student level in your prompt**: Always indicate whether the case is for "advanced placement high school students", "college freshmen", "master’s level seminar", etc. The AI will generally aim its language and detail to that level. 
-  - For *younger* students, you can add instructions like "*explain any difficult terms*" or "*use simple, clear language appropriate for high school.*" 
-  - For *more advanced* students, you might allow or even request technical vocabulary and more complex sentence structure. By specifying the audience, you set the expectation for complexity.
-- **Control the length and detail**: For a quick classroom exercise in a 45-minute class, a 200-word case might suffice, whereas a graduate-level case study could be 1000 words plus appendices. 
-  - In prompts, feel free to say things like "*Keep the case description under 300 words.*" or "*Include at least two paragraphs of background detail.*" 
-  - Likewise, you can request a certain number of points or options: e.g. "*Give 3 possible solutions the character might consider.*" If the AI gives too much or too little detail, ask it to refine (e.g., "*provide more context about why this is problematic,*" or "*simplify the background information*").
-- **Adjust realism and complexity of scenario**: For less experienced learners, you might choose scenarios closer to everyday life or familiar situations (e.g., a case about school recycling programs for middle schoolers, vs. a case about international climate policy for graduate students). You can instruct the AI accordingly: "*Make the scenario something a typical 15-year-old could relate to.*" For more advanced learners, you can increase the complexity: "*Include one or two complicating factors or unexpected twists in the case to make it more challenging.*" For example, in a business case, an advanced version might introduce a sudden market change halfway through the narrative.
-- **Use analogies and storytelling for younger audiences**: If the concept is abstract or technical, ask the AI to incorporate an analogy or a story element. "*Use an analogy to a sports competition to explain this scientific concept in the case.*" This can make complex ideas accessible. Conversely, for an expert audience, you might say "*avoid simplistic analogies*" if you want a more straightforward, technical presentation.
-- **Scaffold for different levels**: You can generate multiple versions of the case. Perhaps one "baseline" version and then an extended version with extra data or angles. For mixed-ability classes, you might give one group a slightly simpler version and another group a more complex one, then have them share insights. AI makes it easy to get these variations: "*Now produce a second version of this case that adds an extra challenge: [describe the challenge].*"
-- **Customize names and context**: Small touches can make a case feel more relatable. If you teach in a certain city or country, you can have the AI set the case in that locale (e.g., "*set this case in a typical high school in Zurich*" or "*use [local company] as an example*"). Students often perk up when they see familiar names or settings. Just be cautious not to use any real individual’s personal information.
-
-By leveraging these customization strategies, you ensure the AI-generated case hits the sweet spot in complexity – not too easy, not too perplexing. The flexibility of AI means you can tweak and regenerate until it fits just right. This is far easier than manually rewriting a case from scratch for different levels.
+Test the material with representative learners or colleagues, record important
+changes, and retain the reviewed source—not only the generated version. Set a
+review date for content that can become outdated.
 
 </Steps>
 
-## Lecture Slide Content
+## Case studies
 
-AI can help turn an educator-approved outline into a first-pass slide sequence,
-but it should not decide what students need to learn. Start with the learning
-outcomes, the time available, the essential evidence, and any accessibility or
-template requirements. Ask for a **slide plan** before asking for polished copy;
-this makes it easier to correct gaps and pacing.
+Case-based learning can support application and decision-making when the case is
+aligned, credible, and followed by structured analysis.[^Thistlethwaite2012CBL]
+AI can propose scenarios and draft fictional details, but realistic-sounding
+data and stakeholders require careful review.
 
-For example:
+### Case-study prompt
 
-> Create a 12-slide plan for a 30-minute introduction to [topic] for [student
-> level]. Use only the source material below. Map every slide to one of the
-> supplied learning outcomes. For each slide, give its purpose, one key idea, a
-> suggested visual, speaker-note prompts, and the source passage supporting any
-> factual claim. Include two retrieval questions. Do not invent citations; flag
-> outcomes that the source material cannot support.
+```text
+Draft two alternative case outlines for [learner group].
 
-Review the sequence for cognitive load, legibility, contrast, alternative text,
-and time for interaction. Replace decorative visuals with diagrams only when
-they make a relationship easier to understand. Open and verify every source,
-then rewrite the final slides in your own teaching voice.
+Learning outcome:
+[approved outcome]
 
-## Reading Lists
+Students should have to:
+[decision, analysis, or skill]
 
-Need to put together a list of readings or resources on a topic? AI can suggest books, articles, or materials that might fit your course. **Caution**: It may recommend some well-known works, but always double-check references because ChatGPT might invent citations or sources that sound real but aren’t.[^Welborn2023ChatGPT] [^AlkaissiMcFarlane2023Hallucinations] When used carefully, it can help brainstorm relevant authors or keywords for you to search.
+Use only the supplied source pack for factual claims. Clearly label invented
+names and fictional data. Each outline must include:
+- setting and decision point;
+- information students receive;
+- two plausible options with genuine trade-offs;
+- missing information students should ask for;
+- three discussion questions mapped to the outcome; and
+- an educator verification checklist.
 
-**How to prompt**: Clearly state the topic, the level of depth, and the type of sources you want. It helps to mention a few examples or constraints (e.g., recent research papers, classic textbooks, diversity of authors, etc.) to guide the AI.
+Do not resolve the dilemma or portray a protected group as the source of the
+problem. Flag anything the sources do not support.
 
-1.	**Specify the scope**: Start with a prompt like: "`Suggest a reading list for a graduate-level course on Climate Change Policy. Include 5-7 key sources: a mix of seminal books or papers and recent articles. Provide the title, author, and a one-line description of each.`" The model will return a list of titles with short descriptions.
-2.	**Check for accuracy**: Immediately verify the suggestions. ChatGPT may produce plausible-sounding titles that are not real or not exactly on target. Cross-check any citations in your library database or Google Scholar. It’s known that ChatGPT can [hallucinate](/genai/limitations#hallucinations) references, so treat its output as leads, not gospel. Often, the AI will include some genuine classics or well-known authors mixed with a few fabricated ones. Identify which are real. If uncertain, you can even ask the model: "`Are these real publications? Verify the reference for X.`" (Though it might not always admit fakes, so external verification is key.)
-3.	**Refine or fill gaps**: If the AI missed important topics or perspectives, prompt it again: "`Also include a resource on the economics of climate policy in developing countries.`" Or "`Add an open-access report that students can read online.`" You can iteratively ask for more until you have a well-rounded list. If you want diversity, you might say: "`Ensure at least two authors from different regions or a female scholar’s work is included.`" The AI can sometimes incorporate such criteria.
-4.	**Get summaries (optional)**: To help you decide on or present these readings, you might ask the AI to summarize or compare them. e.g., "`Provide a 2-sentence summary for each of the above sources, highlighting how it contributes to climate policy discussions.`" This can generate quick annotations for your reading list handout, which you should verify and polish.
+[source pack]
+```
 
-By using AI for reading lists, you brainstorm a broad set of resources quickly. Just remain vigilant about factual accuracy – always double-check that books/articles exist as described. Use AI to get ideas and then locate the actual sources via your library or reliable search. This approach saves time in curating materials but keeps scholarly integrity intact.
+Select an outline, then verify and refine it. Ensure the case gives students
+enough evidence to reason without embedding the “correct” conclusion in the
+narrative. Label synthetic numbers so they cannot be mistaken for real data.
 
-## What Needs to be Considered
+## Lecture slides
 
-When using generative AI to develop teaching materials, instructors must take full responsibility for the content they create. This means carefully reviewing all AI-generated materials to ensure accuracy, check for potential biases, and verify that the content meets the specific educational goals of the course. AI tools can provide helpful starting points and suggestions, but they are not infallible sources of information. Instructors need to critically examine and modify the materials, drawing on their professional expertise and understanding of their students' needs.
+AI can turn an educator-approved outline into a slide plan, suggest examples,
+or identify where a visual might help. It cannot know what students already
+understand, whether a slide is overloaded, or whether a generated image is
+accurate and appropriately licensed.
 
-Transparency is crucial when incorporating AI into teaching preparation. Instructors should openly communicate with students about their use of AI tools, explaining how and why these technologies are being used in course development. This approach helps build trust, demonstrates academic integrity, and provides an opportunity to discuss the responsible use of emerging technologies. By carefully curating and personalizing AI-generated content, instructors can leverage these tools effectively while maintaining the essential human element that makes education meaningful and engaging.
+### Slide-outline prompt
 
-## Footnotes & References
+```text
+Create a slide outline for a [duration] session with [learner group].
 
-[^AlkaissiMcFarlane2023Hallucinations]: Alkaissi, H., & McFarlane, S. I. (2023). **Artificial hallucinations in ChatGPT: implications in scientific writing**. *International Journal of Medical Education*, *14*, 100–101. https://doi.org/10.1016/j.ijme.2023.100822
+Use only the supplied learning outcomes and source material. For each slide,
+return:
+- one message-style title;
+- no more than three concise points;
+- a suggested visual only when it supports comprehension;
+- speaker notes with the source passage for factual claims; and
+- the student activity or learning check, if any.
 
-[^Burke2023AI]: Burke, C. (2023, December 14). **AI for case studies: How to use ChatGPT to create a case study**. Augurian. https://augurian.com/blog/ai-for-case-studies/
-[^PrudHommeGenereux2024Writing]: Prud’homme-Généreux, A. (2024, April 3). **Writing Case Studies Using Generative AI: Intimate Debate Case Study**. Facultyfocus.com. https://www.facultyfocus.com/articles/teaching-with-technology-articles/writing-case-studies-using-generative-ai-intimate-debate-case-study/
-[^Thistlethwaite2012CBL]: Thistlethwaite, J. E., Davies, D., Ekeocha, S., Kidd, J. M., MacDougall, C., Matthews, P., Purkis, J., & Clay, D. (2012). **The effectiveness of case-based learning in health professional education. A BEME systematic review**. *BMC Medical Education*, *12*, 19. https://doi.org/10.1186/1472-6920-12-19
-[^Welborn2023ChatGPT]: Welborn, A. (2023, March 9). **ChatGPT and Fake Citations**. *Duke University Libraries Blogs*. https://blogs.library.duke.edu/blog/2023/03/09/chatgpt-and-fake-citations
+Include an opening retrieval question and a closing check mapped to the
+outcomes. Do not invent citations or image licences. Flag content that requires
+the educator to source or create a visual.
+
+[outcomes and source material]
+```
+
+Before use, remove decorative clutter, split overloaded slides, add meaningful
+alt text, check reading order and contrast, and verify that spoken explanation
+does not carry information unavailable to students using another format.
+
+## Reading lists
+
+Language models are unreliable bibliography generators: they can invent a
+publication or combine details from several real sources.[^AlkaissiMcFarlane2023Hallucinations]
+Use library databases, publisher records, DOI registries, disciplinary indexes,
+or an approved search system to discover and verify literature.
+
+AI can still assist **after sources are verified**. Supply the confirmed
+bibliographic records and abstracts or full text you are permitted to use, then
+ask it to compare coverage, propose an order, or draft annotations.
+
+### Reading-list audit prompt
+
+```text
+Using only the verified source records below, audit this reading list for:
+- coverage of the stated learning outcomes;
+- prerequisite difficulty and weekly workload;
+- duplicated contribution;
+- relevant perspectives or methods that are absent;
+- accessibility and lawful availability; and
+- records that lack enough information for a judgment.
+
+Return a table with source identifier, contribution, outcome, difficulty,
+availability, concern, and educator action. Do not add publications.
+
+[learning outcomes]
+[verified records and abstracts]
+```
+
+Open each item before publishing the list. Confirm authors, title, venue, year,
+DOI or stable link, access conditions, and that the source supports the
+annotation. Asking the same model “are these references real?” is not
+verification.
+
+## Final human review
+
+- The material serves a named learning outcome.
+- Facts and references were checked against authoritative sources.
+- Fictional and synthetic content is clearly labelled.
+- Examples do not reproduce stereotypes or exclude relevant perspectives.
+- Reading level, terminology, workload, and activity timing fit the learners.
+- Accessibility was checked in the final delivery format.
+- Copyright, licences, attribution, and image provenance were reviewed.
+- No protected information was entered into an unapproved tool.
+- Students are told when AI use is relevant to interpreting the material.
+- The educator remains able to revise and teach the material without the tool.
+
+## References & Footnotes
+
+[^AlkaissiMcFarlane2023Hallucinations]: Alkaissi, H., & McFarlane, S. I. (2023). **Artificial hallucinations in ChatGPT: implications in scientific writing**. *Cureus, 15*(2), e35179. https://doi.org/10.7759/cureus.35179
+
+[^Thistlethwaite2012CBL]: Thistlethwaite, J. E., Davies, D., Ekeocha, S., Kidd, J. M., MacDougall, C., Matthews, P., Purkis, D. J., & Clay, D. (2012). **The effectiveness of case-based learning in health professional education. A BEME systematic review**. *BMC Medical Education, 12*, 19. https://doi.org/10.1186/1472-6920-12-19

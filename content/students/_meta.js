@@ -1,4 +1,5 @@
 export default {
+    ai_competencies: 'Building AI competencies',
     exams: 'Learning assessment',
     simulations: 'Simulations',
     tutoring: 'AI as a tutor',

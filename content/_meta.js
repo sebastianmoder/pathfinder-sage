@@ -3,5 +3,5 @@ export default {
     genai: 'Basics of Generative AI',
     prompting: 'Basics of Prompt Engineering',
     teaching: "Teachers' Tasks",
-    students: "Students' Experiences",
+    students: 'Teaching and Learning with AI',
 }
